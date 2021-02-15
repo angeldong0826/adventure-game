@@ -4,7 +4,7 @@
   "rooms": [
     {
       "name": "GreenStreet",
-      "description": "You are on Green Street, outside Hendrick House",
+      "description": "You are on Green Street, outside Hendrick House.",
       "directions": [
         {
           "directionName": "North",
