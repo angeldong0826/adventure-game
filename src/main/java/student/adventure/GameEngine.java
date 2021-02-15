@@ -8,47 +8,51 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
-
 public class GameEngine {
-    Layout layout;
-    List<String> input; // to hold input in an arraylist of Strings.
 
-    public void Game() throws FileNotFoundException {
+    public void game() throws FileNotFoundException {
         Gson gson = new Gson();
         Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
-        layout = gson.fromJson(reader, Layout.class);
+        Layout layout = gson.fromJson(reader, Layout.class);
         Room startingRoom = layout.getRooms().get(0);
         Room currentRoom = startingRoom;
-        boolean done = true;
-
+        Room nextRoom = null;
+        boolean done = false;
+        Scanner scan = new Scanner(System.in);
 
         while(!done) {
-            System.out.println(startingRoom.getDescription());
-            System.out.println("From here, you can go: " + returnAvailableDirections(currentRoom) + ".");
-            System.out.println("Items visible: " + );
+            System.out.println(currentRoom.getDescription());
+            currentRoom.returnAvailableDirections();
+            currentRoom.returnAvailableItems();
             System.out.print("> ");
-            Scanner scan = new Scanner(System.in);
-            input.add(scan.next());
-            if (input.get(0).equals("quit") || input.get(0).equals("exit")) { // quitting the game.
-                done = false;
-            }
-            if (input.get(0).equals("go")) {
-                if (returnAvailableDirections(currentRoom).contains(input.get(1))) {
+            String input = scan.nextLine(); // to hold input as a String.
+            String[] splitInput = input.split(" "); // to hold input split by whitespace in an arraylist.
 
+            if (input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) { // quitting the game.
+                System.out.println("You have " + input + " the game.");
+                break;
+            }
+
+            if (input.equalsIgnoreCase("examine")) {
+                continue;
+            }
+
+            if (!(splitInput[0].equalsIgnoreCase("go")) || !(splitInput[0].equalsIgnoreCase("take")) || !(splitInput[0].equalsIgnoreCase("drop"))) {
+                System.out.println("Invalid command");
+                continue;
+            }
+            if (splitInput[0].equalsIgnoreCase("go")) {
+                nextRoom = Helper.updateCurrentRoom(layout, splitInput[1], currentRoom);
+                if (currentRoom == null) {
+                    System.out.println("I can't go " + splitInput[1] + "!");
+                    continue;
                 }
+                currentRoom = nextRoom;
+            }
+            if (splitInput[0].equalsIgnoreCase("take")) {
+
             }
         }
         // exit game.
-    }
-
-    // helper method that returns all available directions from a room.
-    private List<String> returnAvailableDirections(Room room) {
-        List<String> availableDirections = new ArrayList<>(); // to hold input room's available directions.
-        for (int i = 0; i < layout.getRooms().size(); i++) {
-            if (room.getName().equals(layout.getRooms().get(i).getName())) {
-                availableDirections.add(layout.getRooms().get(i).getDirections().get(i).getDirectionName());
-            }
-        }
-        return availableDirections;
     }
 }
