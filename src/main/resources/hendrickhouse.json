@@ -1,0 +1,264 @@
+{
+  "startingRoom": "GreenStreet",
+  "endingRoom": "Room1705",
+  "rooms": [
+    {
+      "name": "GreenStreet",
+      "description": "You are on Green Street, outside Hendrick House",
+      "directions": [
+        {
+          "directionName": "North",
+          "room": "MainEntrance"
+        }
+      ]
+    },
+    {
+      "name": "MainEntrance",
+      "description": "You are in the main entrance of Hendrick House. You can see the front desk, stairs leading to the basement, and hallways to the east and west buildings.",
+      "directions": [
+        {
+          "directionName": "South",
+          "room": "GreenStreet"
+        },
+        {
+          "directionName": "Northwest",
+          "room": "FrontDesk"
+        },
+        {
+          "directionName": "Northeast",
+          "room": "BasementStairs"
+        },
+        {
+          "directionName": "East",
+          "room": "EastHallway"
+        },
+        {
+          "directionName": "West",
+          "room": "WestHallway"
+        }
+      ]
+    },
+    {
+      "name": "FrontDesk",
+      "description": "You are at the front desk, where you can find lovely staffs who can assist you with pretty much anything.",
+      "directions": [
+        {
+          "directionName": "Southeast",
+          "room": "MainEntrance"
+        }
+      ]
+    },
+    {
+      "name": "BasementStairs",
+      "description": "You are on the stairs leading to the basement. You can see the basement lounge.",
+      "directions": [
+        {
+          "directionName": "Southwest",
+          "room": "MainEntrance"
+        },
+        {
+          "directionName": "Down",
+          "room": "BasementLounge"
+        }
+      ]
+    },
+    {
+      "name": "BasementLounge",
+      "description": "You are in the basement lounge. There are study tables and seats. You can see the computer room and a hallway leading to the east laundry room, the gym, and the east elevators.",
+      "directions": [
+        {
+          "directionName": "Up",
+          "room": "BasementStairs"
+        },
+        {
+          "directionName": "West",
+          "room": "ComputerRoom"
+        },
+        {
+          "directionName": "East",
+          "room": "EastBasementHallway"
+        }
+      ]
+    },
+    {
+      "name": "ComputerRoom",
+      "description": "You are in the computer room. You see 3 desktops and that's pretty much it.",
+      "directions": [
+        {
+          "directionName": "East",
+          "room": "BasementLounge"
+        }
+      ]
+    },
+    {
+      "name": "EastBasementHallway",
+      "description": "You are in the east basement hallway. You can see the east laundry room, the gym, and the east elevators.",
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "BasementLounge"
+        },
+        {
+          "directionName": "East",
+          "room": "EastLaundryRoom"
+        },
+        {
+          "directionName": "South",
+          "room": "EastElevators"
+        },
+        {
+          "directionName": "SouthEast",
+          "room": "Gym"
+        }
+      ]
+    },
+    {
+      "name": "EastLaundryRoom",
+      "description": "You are in the east laundry room.  There are 4 washers and dryers. And piles of clothes, dirty and clean.",
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "EastBasementHallway"
+        }
+      ]
+    },
+    {
+      "name": "EastElevatorsBasementFloor",
+      "description": "You are in one of the two elevators of the east building. The close and open door buttons do not work and the elevators are heckin' slow :') However you can go up up to 6th floor.",
+      "directions": [
+        {
+          "directionName": "North",
+          "room": "EastBasementHallway"
+        }
+      ]
+    },
+    {
+      "name": "Gym",
+      "description": "You are in the gym. As you can tell, it's a pretty jank gym. But it works well with covid cuz it's private and is relatively less exposed to covid.",
+      "directions": [
+        {
+          "directionName": "Northwest",
+          "room": "EastBasementHallway"
+        }
+      ]
+    },
+    {
+      "name": "EastHallway",
+      "description": "You are in the east hallway. You see the cafeteria and the east lounge.",
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "MainEntrance"
+        },
+        {
+          "directionName": "North",
+          "room": "Cafeteria"
+        },
+        {
+          "directionName": "East",
+          "room": "EastLounge"
+        }
+      ]
+    },
+    {
+      "name": "Cafeteria",
+      "description": "You are in the cafeteria. You see a long line of people waiting to get food. You also see the east elevators.",
+      "directions": [
+        {
+          "directionName": "South",
+          "room": "EastHallway"
+        },
+        {
+          "directionName": "East",
+          "room": "EastElevatorsFirstFloor"
+        }
+      ]
+    },
+    {
+      "name": "EastElevatorsFirstFloor",
+      "description": "You are in one of the two elevators of the east building. The close and open door buttons do not work and the elevators are heckin' slow :') However you can go up up to 6th floor and down to basement.",
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "Cafeteria"
+        }
+      ]
+    },
+    {
+      "name": "EastLounge",
+      "description": "You are in the east lounge. You see a pool table, a couch, and a TV.",
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "EastHallway"
+        }
+      ]
+    },
+    {
+      "name": "WestHallway",
+      "description": "You are in the west hallway. You see the west lounge.",
+      "directions": [
+        {
+          "directionName": "East",
+          "room": "MainEntrance"
+        },
+        {
+          "directionName": "West",
+          "room": "WestLounge"
+        }
+      ]
+    },
+    {
+      "name": "WestLounge",
+      "description": "You are in the west lounge. There are 4 study tables and you can see the west elevators.",
+      "directions": [
+        {
+          "directionName": "East",
+          "room": "WestHallway"
+        },
+        {
+          "directionName": "Northeast",
+          "room": "WestElevatorsFirstFloor"
+        }
+      ]
+    },
+    {
+      "name": "WestElevatorsFirstFloor",
+      "description": "You are in one of the two west elevators. The better elevators :') The buttons actually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
+      "directions": [
+        {
+          "directionName": "Southwest",
+          "room": "WestLounge"
+        },
+        {
+          "directionName": "Up",
+          "room": "WestElevatorsSeventhFloor"
+        }
+      ]
+    },
+    {
+      "name": "WestElevatorsSeventhFloor",
+      "description": "You are in one of the two west elevators. The better elevators :') The buttons actually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
+      "directions": [
+        {
+          "directionName": "Down",
+          "room": "WestElevatorsFirstFloor"
+        },
+        {
+          "directionName": "Southwest",
+          "room": "Room1705"
+        }
+      ]
+    },
+    {
+      "name": "Room1705",
+      "description": "You are in room 1705 of the west building of Hendrick House! Yay you made it!",
+      "directions": [
+        {
+          "directionName": "Northeast",
+          "room": "WestElevatorsSeventhFloor"
+        }
+      ]
+    }
+  ]
+}
