@@ -55,7 +55,7 @@ public class Helper {
                     inventories.add(room.getItems().get(i).getItemName());
                     System.out.println("Item " + item + " taken.");
                 } else {
-                    System.out.println("You have already acquired this item.");
+                    System.out.println("You have already acquired " + item + ".");
                 }
             }
         }
@@ -71,6 +71,15 @@ public class Helper {
     public static void drop(Room room, String item, List<String> inventories) {
         if (room == null || item == null || inventories == null) {
             throw new NullPointerException();
+        }
+        for (int i = 0; i < inventories.size(); i++) {
+            if ((i == inventories.size() - 1) && !(inventories.get(i).equalsIgnoreCase(item))) {
+                System.out.println("You don't have " + item + "!");
+            }
+            if (inventories.get(i).equalsIgnoreCase(item)) {
+                inventories.remove(inventories.get(i));
+                System.out.println("Item " + item + " dropped.");
+            }
         }
     }
 }

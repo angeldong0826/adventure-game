@@ -54,18 +54,20 @@ public class GameEngine {
             }
             if (splitInput[0].equalsIgnoreCase("go")) {
                 nextRoom = Helper.updateCurrentRoom(layout, splitInput[1], currentRoom);
-                System.out.println(currentRoom.getDescription());
-                currentRoom.returnAvailableDirections();
-                currentRoom.returnAvailableItems(inventories);
                 if (nextRoom == null) {
-                    System.out.println("I can't go " + splitInput[1] + "!");
+                    System.out.println("You can't go " + splitInput[1] + "!");
                     continue;
                 }
                 currentRoom = nextRoom;
+                System.out.println(currentRoom.getDescription());
+                currentRoom.returnAvailableDirections();
+                currentRoom.returnAvailableItems(inventories);
             }
             if (splitInput[0].equalsIgnoreCase("take")) {
-                //item = new Item(splitInput[1]);
                 Helper.take(currentRoom, splitInput[1], inventories);
+            }
+            if (splitInput[0].equalsIgnoreCase("drop")) {
+                Helper.drop(currentRoom, splitInput[1], inventories);
             }
         }
         // exit game.

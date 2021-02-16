@@ -1,20 +1,20 @@
 package student.adventure;
 
 public class GameState {
-    private Room currentLocation;
+    private Room currentRoom;
     private Item inventory;
 
     public GameState(Room setCurrentLocation, Item setInventory) {
-        currentLocation = setCurrentLocation;
+        currentRoom = setCurrentLocation;
         inventory = setInventory;
     }
 
     public Room getCurrentLocation() {
-        return currentLocation;
+        return currentRoom;
     }
 
     public void setCurrentLocation(Room currentLocation) {
-        this.currentLocation = currentLocation;
+        this.currentRoom = currentLocation;
     }
 
     public Item getInventory() {
