@@ -1,7 +1,5 @@
 package student.adventure;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,13 +10,6 @@ public class Room {
     private String description; // description of room as a String
     private List<Item> items; // list of items in room
     private List<Direction> directions; // list of directions and rooms they lead to from a room
-
-//    public Room(String setName, String setDescription, List<Item> setItems, List<Direction> setDirections) {
-//        name = setName;
-//        description = setDescription;
-//        items = setItems;
-//        directions = setDirections;
-//    }
 
     public String getName() {
         return name;
@@ -52,7 +43,7 @@ public class Room {
     }
 
     // helper method that returns all available items in a room.
-    public void returnAvailableItems() {
+    public void returnAvailableItems(List<String> inventories) {
         String availableItems = "Items visible: ";
         if (items == null) {
             throw new NullPointerException();
@@ -61,7 +52,9 @@ public class Room {
             availableItems += "";
         }
         for (int i = 0; i < items.size(); i++) {
-            availableItems += items.get(i).getItemName();
+            if (items.get(i) != null && !(inventories.contains(items.get(i).getItemName()))) {
+                availableItems += items.get(i).getItemName()  + " ";
+            }
         }
         System.out.println(availableItems);
     }

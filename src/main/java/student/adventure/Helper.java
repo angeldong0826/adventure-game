@@ -27,4 +27,19 @@ public class Helper {
         }
         return updatedRoom;
     }
+
+    public static void take(Room room, String item, List<String> inventories) {
+        if (room == null) {
+            throw new NullPointerException();
+        }
+        for (int i = 0; i < room.getItems().size(); i++) {
+            if ((i == room.getItems().size() - 1) && !(room.getItems().get(i).getItemName().equalsIgnoreCase(item))) {
+                System.out.println("There is no item " + item + " in the room.");
+            }
+            if (room.getItems().get(i).getItemName().equalsIgnoreCase(item)) {
+                inventories.add(room.getItems().get(i).getItemName());
+                System.out.println("Item " + item + " taken.");
+            }
+        }
+    }
 }
