@@ -27,7 +27,9 @@ public class Room {
         return directions;
     }
 
-    // helper method that returns all available directions from a room.
+    /**
+     * Helper method that prints all available directions from a room.
+     */
     public void returnAvailableDirections() {
         String availableDirections = "From here, you can go: ";
         if (directions == null) {
@@ -42,6 +44,11 @@ public class Room {
         System.out.println(availableDirections);
     }
 
+    /**
+     * Helper method that returns all available items in a row.
+     * @throws NullPointerException when items is null
+     * @param inventories as a list of Strings
+     */
     // helper method that returns all available items in a room.
     public void returnAvailableItems(List<String> inventories) {
         String availableItems = "Items visible: ";

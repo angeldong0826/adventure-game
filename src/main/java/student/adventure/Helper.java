@@ -37,8 +37,12 @@ public class Helper {
                 System.out.println("There is no item " + item + " in the room.");
             }
             if (room.getItems().get(i).getItemName().equalsIgnoreCase(item)) {
-                inventories.add(room.getItems().get(i).getItemName());
-                System.out.println("Item " + item + " taken.");
+                if (!(inventories.contains(item))) {
+                    inventories.add(room.getItems().get(i).getItemName());
+                    System.out.println("Item " + item + " taken.");
+                } else {
+                    System.out.println("You have already acquired this item.");
+                }
             }
         }
     }
