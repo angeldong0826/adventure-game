@@ -4,9 +4,16 @@ import java.util.List;
 
 public class Helper {
 
-    // helper method that updates a new current room.
+    /**
+     * Helper method that updates and returns a new current room.
+     * @param layout as a Layout
+     * @param direction as a String
+     * @param currentRoom as a Room
+     * @return updated/new current room as a Room
+     * @throws NullPointerException if layout, direction, or currentRoom input is null
+     */
     public static Room updateCurrentRoom(Layout layout, String direction, Room currentRoom) {
-        if (currentRoom == null) {
+        if (layout == null || direction == null || currentRoom == null) {
             throw new NullPointerException();
         }
         Room updatedRoom = null;
@@ -28,8 +35,15 @@ public class Helper {
         return updatedRoom;
     }
 
+    /**
+     * Helper method that takes items from rooms and updates the inventory list.
+     * @param room as a Room
+     * @param item as a String
+     * @param inventories as a list of Strings
+     * @throws NullPointerException if room, item, or inventories input is null
+     */
     public static void take(Room room, String item, List<String> inventories) {
-        if (room == null) {
+        if (room == null || item == null || inventories == null) {
             throw new NullPointerException();
         }
         for (int i = 0; i < room.getItems().size(); i++) {
@@ -44,6 +58,19 @@ public class Helper {
                     System.out.println("You have already acquired this item.");
                 }
             }
+        }
+    }
+
+    /**
+     * Helper method that drops items from rooms and updates the inventory list.
+     * @param room as a Room
+     * @param item as a String
+     * @param inventories as a list of Strings
+     * @throws NullPointerException if room, item, or inventories input is null
+     */
+    public static void drop(Room room, String item, List<String> inventories) {
+        if (room == null || item == null || inventories == null) {
+            throw new NullPointerException();
         }
     }
 }

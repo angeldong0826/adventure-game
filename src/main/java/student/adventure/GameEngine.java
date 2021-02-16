@@ -15,7 +15,7 @@ import sun.lwawt.macosx.CSystemTray;
 public class GameEngine {
     /**
      * IMPLEMENT
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException when no JSON file is found
      */
     public void game() throws FileNotFoundException {
         Gson gson = new Gson();
