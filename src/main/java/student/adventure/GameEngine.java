@@ -8,16 +8,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
+/**
+ * IMPLEMENT
+ */
 public class GameEngine {
-
+    /**
+     * IMPLEMENT
+     * @throws FileNotFoundException
+     */
     public void game() throws FileNotFoundException {
         Gson gson = new Gson();
         Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
         Layout layout = gson.fromJson(reader, Layout.class);
-        Room startingRoom = layout.getRooms().get(0);
-        Room currentRoom = startingRoom;
+        Room currentRoom = layout.getRooms().get(0);
         Room nextRoom = null;
         boolean done = false;
+        List<String> inventories = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
 
         while(!done) {
@@ -37,13 +43,13 @@ public class GameEngine {
                 continue;
             }
 
-            if (!(splitInput[0].equalsIgnoreCase("go")) || !(splitInput[0].equalsIgnoreCase("take")) || !(splitInput[0].equalsIgnoreCase("drop"))) {
-                System.out.println("Invalid command");
+            if (!splitInput[0].equalsIgnoreCase("go") && !splitInput[0].equalsIgnoreCase("take") && !splitInput[0].equalsIgnoreCase("drop")) {
+                System.out.println("Invalid command.");
                 continue;
             }
             if (splitInput[0].equalsIgnoreCase("go")) {
                 nextRoom = Helper.updateCurrentRoom(layout, splitInput[1], currentRoom);
-                if (currentRoom == null) {
+                if (nextRoom == null) {
                     System.out.println("I can't go " + splitInput[1] + "!");
                     continue;
                 }

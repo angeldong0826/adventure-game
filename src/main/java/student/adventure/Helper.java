@@ -10,15 +10,15 @@ public class Helper {
             throw new NullPointerException();
         }
         Room updatedRoom = null;
-        String updatedRoomName = "";
+        String updatedRoomName;
         List<Direction> directionList = currentRoom.getDirections();
         for (int i = 0; i < directionList.size(); i++) {
             Direction directionName = directionList.get(i);
-            if (directionName.getDirectionName().equals(direction)) {
+            if (directionName.getDirectionName().equalsIgnoreCase(direction)) {
                 updatedRoomName = directionName.getRoom();
                 for (int j = 0; j < layout.getRooms().size(); j++) {
                     Room newRoom = layout.getRooms().get(j);
-                    if (newRoom.getName().equals(updatedRoomName)) {
+                    if (newRoom.getName().equalsIgnoreCase(updatedRoomName)) {
                         updatedRoom = layout.getRooms().get(j);
                         return updatedRoom;
                     }

@@ -4,17 +4,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * IMPLEMENT
+ */
 public class Room {
-    private String name;
-    private String description;
-    private List<Item> items;
-    private List<Direction> directions;
-    public Room(String setName, String setDescription, List<Item> setItems, List<Direction> setDirections) {
-        name = setName;
-        description = setDescription;
-        items = setItems;
-        directions = setDirections;
-    }
+    private String name; // name of room as a String
+    private String description; // description of room as a String
+    private List<Item> items; // list of items in room
+    private List<Direction> directions; // list of directions and rooms they lead to from a room
+
+//    public Room(String setName, String setDescription, List<Item> setItems, List<Direction> setDirections) {
+//        name = setName;
+//        description = setDescription;
+//        items = setItems;
+//        directions = setDirections;
+//    }
 
     public String getName() {
         return name;
@@ -42,7 +46,7 @@ public class Room {
             availableDirections += "";
         }
         for (int i = 0; i < directions.size(); i++) {
-            availableDirections += directions.get(i).getDirectionName();
+            availableDirections += directions.get(i).getDirectionName() + " ";
         }
         System.out.println(availableDirections);
     }

@@ -6,6 +6,9 @@
       "name": "GreenStreet",
       "description": "You are on Green Street, outside Hendrick House.",
       "items": [
+        {
+          "itemName": "Glass Door"
+        }
       ],
       "directions": [
         {
@@ -19,7 +22,7 @@
       "description": "You are in the main entrance of Hendrick House. You can see the front desk, stairs leading to the basement, and hallways to the east and west buildings.",
       "items": [
         {
-          "itemName": "handSanitizer"
+          "itemName": "Hand Sanitizer"
         }
       ],
       "directions": [
