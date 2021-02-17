@@ -1,9 +1,12 @@
 package student.adventure;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 /**
- * IMPLEMENT
+ * Layout class that stores and returns the starting and ending rooms as Strings as well as rooms in the game as a List.
  */
 public class Layout {
     private String startingRoom; // name of the starting room

@@ -13,6 +13,7 @@ import sun.lwawt.macosx.CSystemTray;
  * IMPLEMENT
  */
 public class GameEngine {
+    public static GameState gameState;
     /**
      * IMPLEMENT
      * @throws FileNotFoundException when no JSON file is found
@@ -21,20 +22,18 @@ public class GameEngine {
         Gson gson = new Gson();
         Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
         Layout layout = gson.fromJson(reader, Layout.class);
-        Room currentRoom = layout.getRooms().get(0);
-        //Item item = null;
-        Room nextRoom = null;
+        Room currentRoom = layout.getRooms().get(0); // to hold the current room.
+        Room nextRoom = null; // to hold the next room for my updateCurrentRoom method.
+        gameState = new GameState(currentRoom, new ArrayList<>());
         boolean done = false;
-        List<String> inventories = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
-
         System.out.println(currentRoom.getDescription());
         currentRoom.returnAvailableDirections();
-        currentRoom.returnAvailableItems(inventories);
+        currentRoom.printAvailableItems(currentRoom);
         while(!done) {
             System.out.print("> ");
             String input = scan.nextLine(); // to hold input as a String.
-            String[] splitInput = input.split(" "); // to hold input split by whitespace in an arraylist.
+            String[] splitInput = input.split("\\s+"); // to hold input split by whitespace in an arraylist.
 
             if (input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) { // quitting the game.
                 System.out.println("You have " + input + " the game.");
@@ -44,7 +43,7 @@ public class GameEngine {
             if (input.equalsIgnoreCase("examine")) {
                 System.out.println(currentRoom.getDescription());
                 currentRoom.returnAvailableDirections();
-                currentRoom.returnAvailableItems(inventories);
+                currentRoom.printAvailableItems(currentRoom);
                 continue;
             }
 
@@ -61,15 +60,18 @@ public class GameEngine {
                 currentRoom = nextRoom;
                 System.out.println(currentRoom.getDescription());
                 currentRoom.returnAvailableDirections();
-                currentRoom.returnAvailableItems(inventories);
+                currentRoom.printAvailableItems(currentRoom);
             }
             if (splitInput[0].equalsIgnoreCase("take")) {
-                Helper.take(currentRoom, splitInput[1], inventories);
+                gameState.take(splitInput[1]);
             }
             if (splitInput[0].equalsIgnoreCase("drop")) {
-                Helper.drop(currentRoom, splitInput[1], inventories);
+                gameState.drop(splitInput[1]);
+            }
+            if (currentRoom.getName().equalsIgnoreCase(layout.getEndingRoom())) {
+                System.out.println("Congrats! You successfully reached the ending room. Game Over :)");
+                done = true;
             }
         }
-        // exit game.
     }
 }
