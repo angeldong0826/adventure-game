@@ -23,6 +23,10 @@ public class GameEngine {
         return currentRoom;
     }
 
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
     public static GameState gameState;
     /**
      * Game method in the game class that calls on the game.

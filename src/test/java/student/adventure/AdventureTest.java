@@ -5,10 +5,12 @@ import com.google.gson.Gson;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import com.google.gson.JsonSyntaxException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +22,7 @@ public class AdventureTest {
     Reader reader;
     GameEngine gameEngine;
     Layout layout;
-    GameEngine game;
+    GameState gameState;
     Room currentRoom;
     Room nextRoom;
 
@@ -29,6 +31,9 @@ public class AdventureTest {
         gson = new Gson();
         reader = new FileReader("src/main/resources/hendrickhouse.json");
         layout = gson.fromJson(reader, Layout.class);
+        currentRoom = layout.getRooms().get(0);
+        nextRoom = null;
+        gameState = new GameState(currentRoom, new ArrayList<>());
         gameEngine = new GameEngine();
     }
 
@@ -37,19 +42,9 @@ public class AdventureTest {
         layout.getRooms().get(ROOM_COUNT); // checks if room count is out of bounds and not match up with the json file.
     }
 
-//    @Test(expected = FileNotFoundException.class)
-//    public void checkInvalidJsonFile() {
-//        reader = new FileReader("src/main/java/hendrickhouse.json");
-//    }
-
-    @Test(expected = NullPointerException.class)
-    public void test_nullNextRoom() {
-        nextRoom = GameState.updateCurrentRoom(layout, )
-    }
-
     @Test
     public void test_goNorth() {
-        nextRoom = GameState.updateCurrentRoom(layout, "go noRtH", currentRoom);
+        nextRoom = GameState.updateCurrentRoom(layout, "go noRtH", gameState.getCurrentLocation());
         assertEquals("Main Entrance", nextRoom.getName());
     }
 

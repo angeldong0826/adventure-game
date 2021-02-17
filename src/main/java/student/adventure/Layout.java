@@ -1,5 +1,6 @@
 package student.adventure;
 
+import com.google.gson.JsonSyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -24,4 +25,10 @@ public class Layout {
     public List<Room> getRooms() {
         return rooms;
     }
+
+//    public void validate() {
+//        if (startingRoom == null || endingRoom == null || rooms == null) {
+//            throw new JsonSyntaxException("Json file not valid.");
+//        }
+//    }
 }
