@@ -13,6 +13,16 @@ import sun.lwawt.macosx.CSystemTray;
  * GameEngine class where the game happens.
  */
 public class GameEngine {
+
+    private Room currentRoom;
+    private boolean done;
+    private Room nextRoom;
+    private Layout layout;
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
     public static GameState gameState;
     /**
      * Game method in the game class that calls on the game.
@@ -21,61 +31,76 @@ public class GameEngine {
     public void game() throws FileNotFoundException {
         Gson gson = new Gson();
         Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
-        Layout layout = gson.fromJson(reader, Layout.class);
-        Room currentRoom = layout.getRooms().get(0); // to hold the current room.
-        Room nextRoom = null; // to hold the next room for my updateCurrentRoom method.
+        layout = gson.fromJson(reader, Layout.class);
+        currentRoom = layout.getRooms().get(0); // to hold the current room.
+        nextRoom = null; // to hold the next room for my updateCurrentRoom method.
         gameState = new GameState(currentRoom, new ArrayList<>());
-        boolean done = false;
+        boolean done = false; // boolean to control status of game.
         Scanner scan = new Scanner(System.in);
+
         System.out.println(gameState.getCurrentLocation().getDescription());
-        gameState.getCurrentLocation().returnAvailableDirections();
+        gameState.getCurrentLocation().printAvailableDirections();
         gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
+
         while(!done) {
             System.out.print("> ");
             String input = scan.nextLine(); // to hold input as a String.
             String[] splitInput = input.split("\\s+"); // to hold input split by whitespace in an arraylist.
 
-            if (input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) { // quitting the game.
-                System.out.println("You have " + input + " the game.");
-                break;
-            }
+            helper(input);
+        }
+    }
 
-            if (input.equalsIgnoreCase("examine")) {
-                System.out.println(gameState.getCurrentLocation().getDescription());
-                gameState.getCurrentLocation().returnAvailableDirections();
+    /**
+     * Helper method for testing.
+     * @param input as a String
+     */
+    public void helper(String input) {
+        String[] splitInput = input.split("\\s+"); // to hold input split by whitespace in an arraylist.
+
+        if (input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) { // quitting the game.
+            System.out.println("You have " + input + " the game.");
+            return;
+        }
+
+        if (input.equalsIgnoreCase("examine")) {
+            System.out.println(gameState.getCurrentLocation().getDescription());
+            gameState.getCurrentLocation().printAvailableDirections();
+            gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
+            return;
+        }
+
+        if (!splitInput[0].equalsIgnoreCase("go") && !splitInput[0].equalsIgnoreCase("take") && !splitInput[0].equalsIgnoreCase("drop")) {
+            System.out.println("Invalid command.");
+            return;
+        }
+
+        if (splitInput[0].equalsIgnoreCase("go")) {
+            nextRoom = GameState.updateCurrentRoom(layout, splitInput[1], gameState.getCurrentLocation());
+            if (nextRoom == null) {
+                System.out.println("You can't go " + splitInput[1] + "!");
+                return;
+            }
+            gameState.setCurrentLocation(nextRoom);
+            System.out.println(gameState.getCurrentLocation().getDescription());
+            if (!(gameState.getCurrentLocation().getName().equalsIgnoreCase(layout.getEndingRoom()))) {
+                gameState.getCurrentLocation().printAvailableDirections();
                 gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
-                continue;
             }
+        }
 
-            if (!splitInput[0].equalsIgnoreCase("go") && !splitInput[0].equalsIgnoreCase("take") && !splitInput[0].equalsIgnoreCase("drop")) {
-                System.out.println("Invalid command.");
-                continue;
-            }
+        if (splitInput[0].equalsIgnoreCase("take")) {
+            gameState.take(splitInput[1]);
+        }
 
-            if (splitInput[0].equalsIgnoreCase("go")) {
-                nextRoom = GameState.updateCurrentRoom(layout, splitInput[1], gameState.getCurrentLocation());
-                if (nextRoom == null) {
-                    System.out.println("You can't go " + splitInput[1] + "!");
-                    continue;
-                }
-                gameState.setCurrentLocation(nextRoom);
-                System.out.println(gameState.getCurrentLocation().getDescription());
-                gameState.getCurrentLocation().returnAvailableDirections();
-                gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
-            }
+        if (splitInput[0].equalsIgnoreCase("drop")) {
+            gameState.drop(splitInput[1]);
+        }
 
-            if (splitInput[0].equalsIgnoreCase("take")) {
-                gameState.take(splitInput[1]);
-            }
-
-            if (splitInput[0].equalsIgnoreCase("drop")) {
-                gameState.drop(splitInput[1]);
-            }
-
-            if (gameState.getCurrentLocation().getName().equalsIgnoreCase(layout.getEndingRoom())) {
-                System.out.println("Congrats! You successfully reached the ending room. Game Over :)");
-                done = true;
-            }
+        // end case for game when player reaches ending room.
+        if (gameState.getCurrentLocation().getName().equalsIgnoreCase(layout.getEndingRoom())) {
+            System.out.println("Congrats! You successfully reached the ending room. Game Over :)");
+            done = true;
         }
     }
 }

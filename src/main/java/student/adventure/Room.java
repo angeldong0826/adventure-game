@@ -41,7 +41,7 @@ public class Room {
      * Helper method that prints out all available directions from a room.
      * @throws NullPointerException when directions is null
      */
-    public void returnAvailableDirections() {
+    public void printAvailableDirections() {
         String availableDirections = "From here, you can go: ";
         if (directions == null) {
             throw new NullPointerException();
