@@ -26,18 +26,12 @@ public class GameEngine {
     }
 
     public static GameState gameState;
+
     /**
      * Game method in the game class that calls on the game.
      * @throws FileNotFoundException when no JSON file is found
      */
     public void game() throws FileNotFoundException {
-//        Gson gson = new Gson();
-//        Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
-//        layout = gson.fromJson(reader, Layout.class);
-//        currentRoom = layout.getRooms().get(0); // to hold the current room.
-//        nextRoom = null; // to hold the next room for my updateCurrentRoom method.
-//        gameState = new GameState(currentRoom, new ArrayList<>());
-//        boolean done = false; // boolean to control status of game.
         variable();
         Scanner scan = new Scanner(System.in);
 
@@ -48,11 +42,14 @@ public class GameEngine {
         while(!done) {
             System.out.print("> ");
             String input = scan.nextLine(); // to hold input as a String.
-
             console(input);
         }
     }
 
+    /**
+     * Helper method variable that creates instances of classes that can be called on when calling on game and testing.
+     * @throws FileNotFoundException when Json file isn't found
+     */
     public static void variable() throws FileNotFoundException {
         Gson gson = new Gson();
         Reader reader = new FileReader("src/main/resources/hendrickhouse.json");

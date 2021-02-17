@@ -68,29 +68,6 @@ public class GameState {
         return updatedRoom;
     }
 
-//    /**
-//     * Helper method that moves player around.
-//     * @param command as a String
-//     */
-//    public void go(String command) {
-//        // String[] splitCommand = command.split("\\s+"); // to hold input split by whitespace in an arraylist.
-//        nextRoom = updateCurrentRoom(layout, command, getCurrentLocation());
-//        boolean valid = false;
-//        while(!valid) {
-//            if (nextRoom == null) {
-//                System.out.println("You can't go " + command + "!");
-//                continue;
-//            }
-//            setCurrentLocation(nextRoom);
-//            System.out.println(getCurrentLocation().getDescription());
-//            if (!(getCurrentLocation().getName().equalsIgnoreCase(layout.getEndingRoom()))) {
-//                getCurrentLocation().printAvailableDirections();
-//                getCurrentLocation().printAvailableItems(getCurrentLocation());
-//                valid = true;
-//            }
-//        }
-//    }
-
     /**
      * Helper method that takes items from rooms and updates the inventory and item lists.
      * @param itemName as a String

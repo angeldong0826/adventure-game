@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.List;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,9 +43,29 @@ public class AdventureTest {
     }
 
     @Test
-    public void test_goNorth() {
-        GameEngine.console("go noRtH");
+    public void test_goValidDirection() {
+        GameEngine.console("go   noRtH");
         assertEquals("Main Entrance", GameEngine.gameState.getCurrentLocation().getName());
+    }
+
+    @Test
+    public void test_goInvalidDirection() {
+        GameEngine.console(" go SOUTh");
+        assertEquals("Green Street", GameEngine.gameState.getCurrentLocation().getName());
+    }
+
+    @Test
+    public void test_takeUnavailableItem() {
+        GameEngine.console(" take handsanitizer");
+        List<Item> item = new ArrayList<>();
+        Assert.assertEquals(item, GameEngine.gameState.getInventory());
+    }
+
+    @Test
+    public void test_takeAvailableItem() {
+        GameEngine.console("take  glassdoor");
+        List<Item> item = new ArrayList<>();
+        Assert.assertEquals(item, GameEngine.gameState.getCurrentLocation().getItems());
     }
 
     @Test
