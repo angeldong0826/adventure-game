@@ -26,9 +26,4 @@ public class Layout {
         return rooms;
     }
 
-//    public void validate() {
-//        if (startingRoom == null || endingRoom == null || rooms == null) {
-//            throw new JsonSyntaxException("Json file not valid.");
-//        }
-//    }
 }

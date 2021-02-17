@@ -16,10 +16,4 @@ public class Direction {
     public String getRoom() {
         return room;
     }
-
-//    public void validate() {
-//        if (directionName == null || room == null) {
-//            throw new JsonSyntaxException("Json file not valid.");
-//        }
-//    }
 }

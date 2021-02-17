@@ -38,12 +38,6 @@ public class Room {
         items.add(item);
     }
 
-//    public void validate() {
-//        if (name == null || description == null || items == null || directions == null) {
-//            throw new JsonSyntaxException("Json file not valid.");
-//        }
-//    }
-
     /**
      * Helper method that prints out all available directions from a room.
      * @throws NullPointerException when directions is null

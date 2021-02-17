@@ -6,18 +6,16 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.List;
-import sun.lwawt.macosx.CSystemTray;
 
 /**
  * GameEngine class where the game happens.
  */
 public class GameEngine {
 
-    private Room currentRoom;
-    private boolean done;
-    private Room nextRoom;
-    private Layout layout;
+    private static Room currentRoom;
+    private static boolean done;
+    private static Room nextRoom;
+    private static Layout layout;
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -33,13 +31,14 @@ public class GameEngine {
      * @throws FileNotFoundException when no JSON file is found
      */
     public void game() throws FileNotFoundException {
-        Gson gson = new Gson();
-        Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
-        layout = gson.fromJson(reader, Layout.class);
-        currentRoom = layout.getRooms().get(0); // to hold the current room.
-        nextRoom = null; // to hold the next room for my updateCurrentRoom method.
-        gameState = new GameState(currentRoom, new ArrayList<>());
-        boolean done = false; // boolean to control status of game.
+//        Gson gson = new Gson();
+//        Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
+//        layout = gson.fromJson(reader, Layout.class);
+//        currentRoom = layout.getRooms().get(0); // to hold the current room.
+//        nextRoom = null; // to hold the next room for my updateCurrentRoom method.
+//        gameState = new GameState(currentRoom, new ArrayList<>());
+//        boolean done = false; // boolean to control status of game.
+        variable();
         Scanner scan = new Scanner(System.in);
 
         System.out.println(gameState.getCurrentLocation().getDescription());
@@ -49,18 +48,27 @@ public class GameEngine {
         while(!done) {
             System.out.print("> ");
             String input = scan.nextLine(); // to hold input as a String.
-            String[] splitInput = input.split("\\s+"); // to hold input split by whitespace in an arraylist.
 
-            helper(input);
+            console(input);
         }
+    }
+
+    public static void variable() throws FileNotFoundException {
+        Gson gson = new Gson();
+        Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
+        layout = gson.fromJson(reader, Layout.class);
+        currentRoom = layout.getRooms().get(0); // to hold the current room.
+        nextRoom = null; // to hold the next room for my updateCurrentRoom method.
+        gameState = new GameState(currentRoom, new ArrayList<>());
+        boolean done = false; // boolean to control status of game.
     }
 
     /**
      * Helper method for testing.
      * @param input as a String
      */
-    public void helper(String input) {
-        String[] splitInput = input.split("\\s+"); // to hold input split by whitespace in an arraylist.
+    public static void console(String input) {
+        String[] splitInput = input.split("\\s+"); // to hold input split by whitespaces in an arraylist.
 
         if (input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("exit")) { // quitting the game.
             System.out.println("You have " + input + " the game.");
