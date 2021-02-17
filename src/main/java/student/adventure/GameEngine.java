@@ -10,12 +10,12 @@ import java.util.List;
 import sun.lwawt.macosx.CSystemTray;
 
 /**
- * IMPLEMENT
+ * GameEngine class where the game happens.
  */
 public class GameEngine {
     public static GameState gameState;
     /**
-     * IMPLEMENT
+     * Game method in the game class that calls on the game.
      * @throws FileNotFoundException when no JSON file is found
      */
     public void game() throws FileNotFoundException {
@@ -27,9 +27,9 @@ public class GameEngine {
         gameState = new GameState(currentRoom, new ArrayList<>());
         boolean done = false;
         Scanner scan = new Scanner(System.in);
-        System.out.println(currentRoom.getDescription());
-        currentRoom.returnAvailableDirections();
-        currentRoom.printAvailableItems(currentRoom);
+        System.out.println(gameState.getCurrentLocation().getDescription());
+        gameState.getCurrentLocation().returnAvailableDirections();
+        gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
         while(!done) {
             System.out.print("> ");
             String input = scan.nextLine(); // to hold input as a String.
@@ -41,9 +41,9 @@ public class GameEngine {
             }
 
             if (input.equalsIgnoreCase("examine")) {
-                System.out.println(currentRoom.getDescription());
-                currentRoom.returnAvailableDirections();
-                currentRoom.printAvailableItems(currentRoom);
+                System.out.println(gameState.getCurrentLocation().getDescription());
+                gameState.getCurrentLocation().returnAvailableDirections();
+                gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
                 continue;
             }
 
@@ -51,24 +51,28 @@ public class GameEngine {
                 System.out.println("Invalid command.");
                 continue;
             }
+
             if (splitInput[0].equalsIgnoreCase("go")) {
-                nextRoom = Helper.updateCurrentRoom(layout, splitInput[1], currentRoom);
+                nextRoom = GameState.updateCurrentRoom(layout, splitInput[1], gameState.getCurrentLocation());
                 if (nextRoom == null) {
                     System.out.println("You can't go " + splitInput[1] + "!");
                     continue;
                 }
-                currentRoom = nextRoom;
-                System.out.println(currentRoom.getDescription());
-                currentRoom.returnAvailableDirections();
-                currentRoom.printAvailableItems(currentRoom);
+                gameState.setCurrentLocation(nextRoom);
+                System.out.println(gameState.getCurrentLocation().getDescription());
+                gameState.getCurrentLocation().returnAvailableDirections();
+                gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
             }
+
             if (splitInput[0].equalsIgnoreCase("take")) {
                 gameState.take(splitInput[1]);
             }
+
             if (splitInput[0].equalsIgnoreCase("drop")) {
                 gameState.drop(splitInput[1]);
             }
-            if (currentRoom.getName().equalsIgnoreCase(layout.getEndingRoom())) {
+
+            if (gameState.getCurrentLocation().getName().equalsIgnoreCase(layout.getEndingRoom())) {
                 System.out.println("Congrats! You successfully reached the ending room. Game Over :)");
                 done = true;
             }

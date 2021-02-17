@@ -50,7 +50,7 @@ public class Room {
             availableDirections += "";
         }
         for (int i = 0; i < directions.size(); i++) {
-            if (i < directions.size() - 2) {
+            if (i <= directions.size() - 2) {
                 availableDirections += directions.get(i).getDirectionName() + ", ";
             } else if (i == directions.size() - 1) {
                 availableDirections += directions.get(i).getDirectionName() + ".";
@@ -59,10 +59,14 @@ public class Room {
         System.out.println(availableDirections);
     }
 
+    /**
+     * Helper method that prints out all available items in a room.
+     * @param room as a Room
+     */
     public void printAvailableItems(Room room) {
         String availableItems = "Items available: ";
         for (int i = 0; i < room.getItems().size(); i++) {
-            if (i < room.getItems().size() - 2) {
+            if (i <= room.getItems().size() - 2) {
                 availableItems += room.getItems().get(i).getItemName() + ", ";
             } else if (i == room.getItems().size() - 1) {
                 availableItems += room.getItems().get(i).getItemName() + ".";

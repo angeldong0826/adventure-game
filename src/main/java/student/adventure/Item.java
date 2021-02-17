@@ -1,7 +1,7 @@
 package student.adventure;
 
 /**
- * Item class that
+ * Item class that stores and returns item names.
  */
 public class Item {
     private String itemName;

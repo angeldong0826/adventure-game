@@ -17,7 +17,7 @@ public class Helper {
         }
         Room updatedRoom = null;
         String updatedRoomName;
-        List<Direction> directionList = currentRoom.getDirections();
+        List<Direction> directionList = GameEngine.gameState.getCurrentLocation().getDirections();
         for (int i = 0; i < directionList.size(); i++) {
             Direction directionName = directionList.get(i);
             if (directionName.getDirectionName().equalsIgnoreCase(direction)) {

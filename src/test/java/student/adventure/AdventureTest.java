@@ -11,7 +11,6 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
-
 public class AdventureTest {
     private static final int ROOM_COUNT = 19;
 

@@ -3,6 +3,9 @@ package student.adventure;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * GameState class where current location and current inventory are updated as the game goes on.
+ */
 public class GameState {
     private Room currentRoom;
     private List<Item> inventory;
@@ -33,7 +36,38 @@ public class GameState {
     }
 
     /**
-     * Helper method that takes items from rooms and updates the inventory list.
+     * Helper method that updates and returns a new current room.
+     * @param layout as a Layout
+     * @param direction as a String
+     * @param currentRoom as a Room
+     * @return updated/new current room as a Room
+     * @throws NullPointerException if layout, direction, or currentRoom input is null
+     */
+    public static Room updateCurrentRoom(Layout layout, String direction, Room currentRoom) {
+        if (layout == null || direction == null || currentRoom == null) {
+            throw new NullPointerException();
+        }
+        Room updatedRoom = null;
+        String updatedRoomName;
+        List<Direction> directionList = GameEngine.gameState.getCurrentLocation().getDirections();
+        for (int i = 0; i < directionList.size(); i++) {
+            Direction directionName = directionList.get(i);
+            if (directionName.getDirectionName().equalsIgnoreCase(direction)) {
+                updatedRoomName = directionName.getRoom();
+                for (int j = 0; j < layout.getRooms().size(); j++) {
+                    Room newRoom = layout.getRooms().get(j);
+                    if (newRoom.getName().equalsIgnoreCase(updatedRoomName)) {
+                        updatedRoom = layout.getRooms().get(j);
+                        return updatedRoom;
+                    }
+                }
+            }
+        }
+        return updatedRoom;
+    }
+
+    /**
+     * Helper method that takes items from rooms and updates the inventory and item lists.
      * @param itemName as a String
      * @throws NullPointerException if room, itemName, or inventories input is null
      */
@@ -42,21 +76,23 @@ public class GameState {
         if (itemName == null) {
             throw new NullPointerException();
         }
+        boolean itemInRoom = false;
         for (int i = 0; i < currentRoom.getItems().size(); i++) {
-            if ((i == currentRoom.getItems().size() - 1) && !(currentRoom.getItems().get(i).getItemName().equalsIgnoreCase(itemName))) {
-                System.out.println("There is no " + itemName + " in the room.");
-            }
             if (currentRoom.getItems().get(i).getItemName().equalsIgnoreCase(itemName)) {
-                addItem(itemDictionary.get(itemName));
+                inventory.add(itemDictionary.get(itemName));
                 System.out.println("Item " + itemName + " taken.");
                 currentRoom.removeItem(itemDictionary.get(itemName));
+                itemInRoom = true;
                 break;
             }
+        }
+        if (!itemInRoom) {
+            System.out.println("There is no " + itemName + " in the room.");
         }
     }
 
     /**
-     * Helper method that drops items from rooms and updates the inventory list.
+     * Helper method that drops items from rooms and updates the inventory and item lists.
      * @param itemName as a String
      * @throws NullPointerException if room, itemName, or inventories input is null
      */
