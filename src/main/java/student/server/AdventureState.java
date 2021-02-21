@@ -1,6 +1,8 @@
 package student.server;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.util.List;
+import student.adventure.Item;
 
 /**
  * A class to represent values in a game state.
@@ -20,4 +22,13 @@ public class AdventureState {
     // E.g.: If your game needs to display a life total, you could add:
     // private int lifeTotal;
     // ...and whatever constructor/getters/setters you'd need
+//    private String inventory;
+//
+//    public AdventureState(String inventory) {
+//        this.inventory = inventory;
+//    }
+//
+//    public String getInventory() {
+//        return inventory;
+//    }
 }

@@ -5,6 +5,7 @@
     {
       "name": "Green Street",
       "description": "You are on Green Street, outside Hendrick House.",
+      "imageUrl": "https://www.google.com/search?q=hendrick+house+uiuc+front+desk&tbm=isch&ved=2ahUKEwixjYPOqvvuAhUZOc0KHfErDV0Q2-cCegQIABAA&oq=hendrick+house+uiuc+front+desk&gs_lcp=CgNpbWcQAzoECAAQHjoECAAQGFDEmANYqbwDYLrLA2gCcAB4AIABaYgBzwmSAQQxMC4zmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=lIEyYLHzMJnytAbx17ToBQ&bih=711&biw=1440#imgrc=vM8LJc325O-f8M",
       "items": [
         {
           "itemName": "GlassDoor"
@@ -20,6 +21,7 @@
     {
       "name": "Main Entrance",
       "description": "You are in the main entrance of Hendrick House. You can see the front desk, stairs leading to the basement, and hallways to the east and west buildings.",
+      "imageUrl": "https://www.google.com/search?q=hendrick+house+uiuc+front+desk&tbm=isch&ved=2ahUKEwixjYPOqvvuAhUZOc0KHfErDV0Q2-cCegQIABAA&oq=hendrick+house+uiuc+front+desk&gs_lcp=CgNpbWcQAzoECAAQHjoECAAQGFDEmANYqbwDYLrLA2gCcAB4AIABaYgBzwmSAQQxMC4zmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=lIEyYLHzMJnytAbx17ToBQ&bih=711&biw=1440#imgrc=S3txq_VHcaO_NM",
       "items": [
         {
           "itemName": "HandSanitizer"
@@ -51,6 +53,7 @@
     {
       "name": "Front Desk",
       "description": "You are at the front desk, where you can find lovely staffs who can assist you with pretty much anything.",
+      "imageUrl": "https://www.google.com/search?q=dorm+front+desk&tbm=isch&ved=2ahUKEwiL2djHq_vuAhURA50JHUXeB04Q2-cCegQIABAA&oq=dorm+front+desk&gs_lcp=CgNpbWcQAzICCAA6BAgjECc6CAgAELEDEIMBOgUIABCxAzoECAAQQzoHCAAQsQMQQzoKCAAQsQMQgwEQQzoGCAAQCBAeOgYIABAKEBg6BAgAEBhQrvoHWMidCGCCoghoAnAAeACAAWyIAYoNkgEEMTEuNpgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=k4IyYMvDOpGG9PwPxbyf8AQ&bih=711&biw=1440#imgrc=dkFzkgK1DEMKJM",
       "items": [
         {
           "itemName": "KeyCard"
@@ -75,6 +78,7 @@
     {
       "name": "Basement Stairs",
       "description": "You are on the stairs leading to the basement. You can see the basement lounge.",
+      "imageUrl": "https://www.google.com/search?q=basement+stairs&tbm=isch&ved=2ahUKEwiB2_OYrPvuAhXGF80KHUBhBF8Q2-cCegQIABAA&oq=basement+stairs&gs_lcp=CgNpbWcQAzIFCAAQsQMyBQgAELEDMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BAgjECc6CAgAELEDEIMBOgQIABBDOgcIABCxAxBDUKdzWLyCAWCRgwFoAHAAeACAAWWIAdEKkgEEMTAuNJgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=PoMyYIHEEMavtAbAwpH4BQ&bih=711&biw=1440#imgrc=aBLdpaI-VblDMM",
       "items": [],
       "directions": [
         {
@@ -90,6 +94,7 @@
     {
       "name": "Basement Lounge",
       "description": "You are in the basement lounge. There are study tables and seats. You can see the computer room and a hallway leading to the east laundry room, the gym, and the east elevators.",
+      "imageUrl": "https://www.google.com/search?q=hendrick+house+uiuc&tbm=isch&ved=2ahUKEwjB_s67rPvuAhVVYqwKHcYeBuUQ2-cCegQIABAA&oq=hendr&gs_lcp=CgNpbWcQARgBMgQIIxAnMgQIIxAnMggIABCxAxCDATIFCAAQsQMyCAgAELEDEIMBMggIABCxAxCDATIICAAQsQMQgwEyBQgAELEDMgUIABCxAzICCAA6BAgAEEM6BwgAELEDEENQty1YvjFgpTpoAHAAeACAAWiIAfIDkgEDMy4ymAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=h4MyYIGfBNXEsQXGvZioDg&bih=711&biw=1440#imgrc=qGOj63rQ2AqoUM",
       "items": [
         {
           "itemName": "StudyTables"
@@ -113,6 +118,7 @@
     {
       "name": "Computer Room",
       "description": "You are in the computer room. You see 3 desktops and that's pretty much it.",
+      "imageUrl": "https://www.google.com/search?q=computer+room&tbm=isch&ved=2ahUKEwjhy9e_rPvuAhULNK0KHR7mAJIQ2-cCegQIABAA&oq=computer+room&gs_lcp=CgNpbWcQAzIFCAAQsQMyAggAMgQIABBDMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADoECCMQJzoKCAAQsQMQgwEQQzoICAAQsQMQgwE6BwgAELEDEENQxccEWKzRBGCM0wRoAHAAeACAAW-IAaUKkgEDNS44mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=j4MyYKHIJIvotAWezIOQCQ&bih=711&biw=1440#imgrc=6qjpkuX3MirV5M",
       "items": [
         {
           "itemName": "Computers"
@@ -128,6 +134,7 @@
     {
       "name": "East Basement Hallway",
       "description": "You are in the east basement hallway. You can see the east laundry room, the gym, and the east elevators.",
+      "imageUrl": "https://www.google.com/search?q=hendrick+house+uiuc&tbm=isch&ved=2ahUKEwjH8rTkrPvuAhWGUawKHRWuCKEQ2-cCegQIABAA&oq&gs_lcp=CgNpbWcQARgAMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnOgQIIxAnOggIABCxAxCDAToECAAQQzoFCAAQsQM6AggAOgcIABCxAxBDUOzzAljL-wJgoZADaANwAHgAgAFviAG2ApIBAzEuMpgBAKABAaoBC2d3cy13aXotaW1nsAEKwAEB&sclient=img&ei=3IMyYMeUJoajsQWV3KKICg&bih=711&biw=1440#imgrc=Zs7BH5SxuC6KTM",
       "items": [],
       "directions": [
         {
@@ -151,6 +158,7 @@
     {
       "name": "East Laundry Room",
       "description": "You are in the east laundry room.  There are 4 washers and dryers. And piles of clothes, dirty and clean.",
+      "imageUrl": "https://www.google.com/search?q=laundry+room+dorm&tbm=isch&ved=2ahUKEwjjyteJrfvuAhUUzqwKHaTiB3cQ2-cCegQIABAA&oq=laundry+room+dorm&gs_lcp=CgNpbWcQAzIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeOgQIABBDOgcIABCxAxBDOgIIADoFCAAQsQNQiiBY3C1gzjFoAXAAeACAAW2IAcIEkgEDNS4xmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=KoQyYOONMJScswWkxZ-4Bw&bih=711&biw=1440#imgrc=UrxmjsL681kEkM",
       "items": [
         {
           "itemName": "WashingMachines"
@@ -172,6 +180,7 @@
     {
       "name": "East Elevators Basement Floor",
       "description": "You are in one of the two elevators of the east building. The close and open door buttons do not work and the elevators are heckin' slow :') However you can go up up to 6th floor.",
+      "imageUrl": "https://www.google.com/search?q=broken+elevator&tbm=isch&ved=2ahUKEwj4-diGrvvuAhXOZq0KHZKoBT4Q2-cCegQIABAA&oq=broken+elevator&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BggAEAcQHlD7IVjELWDVMGgAcAB4AIAB3AGIAdsFkgEFMi4zLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=MIUyYPihOs7NtQWS0ZbwAw&bih=711&biw=1440#imgrc=GU66Hw2tDhWh6M",
       "items": [
         {
           "itemName": "BrokenFloorButtons!"
@@ -187,6 +196,7 @@
     {
       "name": "Gym",
       "description": "You are in the gym. As you can tell, it's a pretty jank gym. But it works well with covid cuz it's private and is relatively less exposed to covid.",
+      "imageUrl": "https://www.google.com/search?tbm=isch&sxsrf=ALeKk00fC0nbk7gaMaFsiLDVpSnkruVT9A%3A1613921903698&source=hp&biw=1440&bih=711&ei=b34yYKfbJ8Gy5NoPg4mYqAM&q=hendrick+house+uiuc&oq=&gs_lcp=CgNpbWcQARgAMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnOgQIIxAnOgUIABCxAzoICAAQsQMQgwE6AggAULsLWM4hYM4waAZwAHgAgAFciAG5A5IBATWYAQCgAQGqAQtnd3Mtd2l6LWltZ7ABCg&sclient=img#imgrc=JPLRXmaLcILipM",
       "items": [
         {
           "itemName": "Treadmill"
@@ -217,6 +227,7 @@
     {
       "name": "East Hallway",
       "description": "You are in the east hallway. You see the cafeteria and the east lounge.",
+      "imageUrl": "https://www.google.com/search?q=dorm+hallway&tbm=isch&ved=2ahUKEwiHrP-Dr_vuAhVMf6wKHW70CqUQ2-cCegQIABAA&oq=dorm+hallway&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyBggAEAUQHjIGCAAQBRAeMgYIABAFEB4yBggAEAUQHjIGCAAQBRAeMgYIABAFEB5QqQlY-j5g7UJoAHAAeACAAWqIAa8CkgEDMS4ymAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=N4YyYMe0LMz-sQXu6KuoCg&bih=711&biw=1440#imgrc=LmFi86UveuuSVM",
       "items": [],
       "directions": [
         {
@@ -236,6 +247,7 @@
     {
       "name": "Cafeteria",
       "description": "You are in the cafeteria. You see a long line of people waiting to get food. You also see the east elevators.",
+      "imageUrl": "https://www.google.com/search?tbm=isch&sxsrf=ALeKk00fC0nbk7gaMaFsiLDVpSnkruVT9A%3A1613921903698&source=hp&biw=1440&bih=711&ei=b34yYKfbJ8Gy5NoPg4mYqAM&q=hendrick+house+uiuc&oq=&gs_lcp=CgNpbWcQARgAMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnOgQIIxAnOgUIABCxAzoICAAQsQMQgwE6AggAULsLWM4hYM4waAZwAHgAgAFciAG5A5IBATWYAQCgAQGqAQtnd3Mtd2l6LWltZ7ABCg&sclient=img#imgrc=pRTlZvvtK0CR3M",
       "items": [
         {
           "itemName": "Food"
@@ -267,6 +279,7 @@
     {
       "name": "East Elevators First Floor",
       "description": "You are in one of the two elevators of the east building. The close and open door buttons do not work and the elevators are heckin' slow :') However you can go up up to 6th floor and down to basement.",
+      "imageUrl": "https://www.google.com/search?q=broken+elevator&tbm=isch&ved=2ahUKEwj4-diGrvvuAhXOZq0KHZKoBT4Q2-cCegQIABAA&oq=broken+elevator&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BggAEAcQHlD7IVjELWDVMGgAcAB4AIAB3AGIAdsFkgEFMi4zLjGYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=MIUyYPihOs7NtQWS0ZbwAw&bih=711&biw=1440#imgrc=GU66Hw2tDhWh6M",
       "items": [
         {
           "itemName": "BrokenFloorButtons!"
@@ -282,6 +295,7 @@
     {
       "name": "East Lounge",
       "description": "You are in the east lounge. You see a pool table, a couch, and a TV.",
+      "imageUrl": "https://www.google.com/search?q=hendrick+house+uiuc+front+desk&tbm=isch&ved=2ahUKEwixjYPOqvvuAhUZOc0KHfErDV0Q2-cCegQIABAA&oq=hendrick+house+uiuc+front+desk&gs_lcp=CgNpbWcQAzoECAAQHjoECAAQGFDEmANYqbwDYLrLA2gCcAB4AIABaYgBzwmSAQQxMC4zmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=lIEyYLHzMJnytAbx17ToBQ&bih=711&biw=1440#imgrc=GmbDOcLAqtqwRM",
       "items": [
         {
           "itemName": "PoolTable"
@@ -303,6 +317,7 @@
     {
       "name": "West Hallway",
       "description": "You are in the west hallway. You see the west lounge.",
+      "imageUrl": "https://www.google.com/search?tbm=isch&sxsrf=ALeKk00fC0nbk7gaMaFsiLDVpSnkruVT9A%3A1613921903698&source=hp&biw=1440&bih=711&ei=b34yYKfbJ8Gy5NoPg4mYqAM&q=hendrick+house+uiuc&oq=&gs_lcp=CgNpbWcQARgAMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnMgcIIxDqAhAnOgQIIxAnOgUIABCxAzoICAAQsQMQgwE6AggAULsLWM4hYM4waAZwAHgAgAFciAG5A5IBATWYAQCgAQGqAQtnd3Mtd2l6LWltZ7ABCg&sclient=img#imgrc=JfEE3G73t0n5kM",
       "items": [],
       "directions": [
         {
@@ -318,6 +333,7 @@
     {
       "name": "West Lounge",
       "description": "You are in the west lounge. There are 4 study tables and you can see the west elevators.",
+      "imageUrl": "https://www.google.com/search?q=dorm+lounge&tbm=isch&ved=2ahUKEwji_tSIr_vuAhUT9awKHV7WD4oQ2-cCegQIABAA&oq=dorm+loung&gs_lcp=CgNpbWcQARgAMgQIIxAnMgIIADIGCAAQBRAeMgYIABAFEB4yBggAEAUQHjIGCAAQBRAeMgYIABAIEB4yBAgAEBgyBAgAEBgyBAgAEBg6BAgAEEM6BQgAELEDOggIABCxAxCDAToHCAAQsQMQQ1CM7AJYmvoCYKWBA2gAcAB4AIABdIgB7geSAQM1LjWYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=QYYyYKLaH5PqswXerL_QCA&bih=711&biw=1440#imgrc=sqfv01LcqmqkwM",
       "items": [
         {
           "itemName": "StudyTables"
@@ -337,6 +353,7 @@
     {
       "name": "West Elevators First Floor",
       "description": "You are in one of the two west elevators. The better elevators :') The buttons actually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
+      "imageUrl": "https://www.google.com/search?q=elevator+dorm&tbm=isch&ved=2ahUKEwjXuq67rfvuAhVmAJ0JHfAHBHQQ2-cCegQIABAA&oq=el&gs_lcp=CgNpbWcQARgAMgQIIxAnMgQIABBDMgQIABBDMggIABCxAxCDATIECAAQQzIECAAQQzIECAAQQzIECAAQQzIFCAAQsQMyBAgAEEM6AggAUKPOB1jB0AdgzNgHaABwAHgAgAFpiAHKAZIBAzEuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=koQyYNepO-aA9PwP8I-QoAc&bih=711&biw=1440#imgrc=PItiMBAU9K67AM",
       "items": [
         {
           "itemName": "Non-brokenFloorButtons!"
@@ -356,6 +373,7 @@
     {
       "name": "West Elevators Seventh Floor",
       "description": "You are in one of the two west elevators. The better elevators :') The buttons actually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
+      "imageUrl": "https://www.google.com/search?q=elevator+dorm&tbm=isch&ved=2ahUKEwjXuq67rfvuAhVmAJ0JHfAHBHQQ2-cCegQIABAA&oq=el&gs_lcp=CgNpbWcQARgAMgQIIxAnMgQIABBDMgQIABBDMggIABCxAxCDATIECAAQQzIECAAQQzIECAAQQzIECAAQQzIFCAAQsQMyBAgAEEM6AggAUKPOB1jB0AdgzNgHaABwAHgAgAFpiAHKAZIBAzEuMZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=koQyYNepO-aA9PwP8I-QoAc&bih=711&biw=1440#imgrc=PItiMBAU9K67AM",
       "items": [
         {
           "itemName": "Non-brokenFloorButtons!"
@@ -375,6 +393,7 @@
     {
       "name": "Room 1705",
       "description": "You are in room 1705 of the west building of Hendrick House! Yay you made it!",
+      "imageUrl": "https://www.google.com/search?q=hendrick+house+uiuc&tbm=isch&ved=2ahUKEwj8-e-5rfvuAhVKBM0KHXxiANUQ2-cCegQIABAA&oq=hen&gs_lcp=CgNpbWcQARgAMgQIIxAnMgQIIxAnMgQIABBDMgQIABBDMgQIABBDMgcIABCxAxBDMggIABCxAxCDATIECAAQQzIECAAQQzIECAAQQzoFCAAQsQNQgwlY6ApgoRJoAHAAeACAAW6IAbUCkgEDMS4ymAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=j4QyYLz2M8qItAb8xIGoDQ&bih=711&biw=1440#imgrc=Nd9eFxxe02-l-M",
       "items": [],
       "directions": [
         {

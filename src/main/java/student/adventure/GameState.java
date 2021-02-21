@@ -1,5 +1,6 @@
 package student.adventure;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -7,11 +8,14 @@ import java.util.Map;
  * GameState class where current location and current inventory are updated as the game goes on.
  */
 public class GameState {
+
     private Room currentRoom;
     private List<Item> inventory;
     private Room nextRoom;
     private Layout layout;
 
+
+    // DONT PRINT IN THIS CLASS
     public GameState(Room setCurrentLocation, List<Item> setInventory) {
         currentRoom = setCurrentLocation;
         inventory = setInventory;
@@ -39,8 +43,9 @@ public class GameState {
 
     /**
      * Helper method that updates and returns a new current room.
-     * @param layout as a Layout
-     * @param direction as a String
+     *
+     * @param layout      as a Layout
+     * @param direction   as a String
      * @param currentRoom as a Room
      * @return updated/new current room as a Room
      * @throws NullPointerException if layout, direction, or currentRoom input is null
@@ -68,12 +73,15 @@ public class GameState {
         return updatedRoom;
     }
 
+
     /**
      * Helper method that takes items from rooms and updates the inventory and item lists.
+     *
      * @param itemName as a String
-     * @throws NullPointerException if room, itemName, or inventories input is null
+     * @return whether or not item is in room/taken successfully as a boolean
+     * @throws NullPointerException itemName
      */
-    public void take(String itemName) {
+    public boolean take(String itemName) {
         Map<String, Item> itemDictionary = Room.createItemDictionary(currentRoom);
         if (itemName == null) {
             throw new NullPointerException();
@@ -91,14 +99,17 @@ public class GameState {
         if (!itemInRoom) {
             System.out.println("There is no " + itemName + " in the room.");
         }
+        return itemInRoom;
     }
 
     /**
      * Helper method that drops items from rooms and updates the inventory and item lists.
+     *
      * @param itemName as a String
-     * @throws NullPointerException if room, itemName, or inventories input is null
+     * @return whether or not item is dropped successfully as a boolean
+     * @throws NullPointerException itemName is null
      */
-    public void drop(String itemName) {
+    public boolean drop(String itemName) {
         if (itemName == null) {
             throw new NullPointerException();
         }
@@ -116,5 +127,45 @@ public class GameState {
         if (!itemInInventory) {
             System.out.println("You don't have " + itemName + "!");
         }
+        return itemInInventory;
     }
 }
+
+//public class GameState {
+//    private String currentRoom; // current room that player is in
+//    private List<String> inventory; // current inventory that player has
+//
+//    /**
+//     * Constructor for current room and inventory.
+//     * @param currentRoom as a String
+//     * @param inventory as an ArrayList
+//     */
+//    public GameState(String currentRoom, List<String> inventory) {
+//        this.currentRoom = currentRoom;
+//        this.inventory = inventory;
+//    }
+//
+//    /**
+//     * Constructor to set the starting room.
+//     * @param startingRoom as a String
+//     */
+//    public GameState(String startingRoom) {
+//        currentRoom = startingRoom;
+//        inventory = new ArrayList<>();
+//    }
+//
+//    public String getCurrentRoom() {
+//        return currentRoom;
+//    }
+//
+//    public List<String> getInventory() {
+//        return new ArrayList<>(inventory);
+//    }
+//
+//    /**
+//     * Method to update current room as player moves in game.
+//     * @param room as a String
+//     */
+//    public void updateRoom(String room) {
+//        this.currentRoom = room;
+//    }

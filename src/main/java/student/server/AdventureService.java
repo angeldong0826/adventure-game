@@ -38,9 +38,9 @@ public interface AdventureService {
      */
     void executeCommand(int id, Command command);
 
-    /**
-     * Returns a sorted leaderboard of player "high" scores.
-     * @return a sorted map of player names to scores
-     */
-    SortedMap<String, Integer> fetchLeaderboard();
+//    /**
+//     * Returns a sorted leaderboard of player "high" scores.
+//     * @return a sorted map of player names to scores
+//     */
+//    SortedMap<String, Integer> fetchLeaderboard();
 }

@@ -6,13 +6,17 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Room class that stores and returns the names and descriptions of rooms as Strings, items in rooms and directions rooms lead to as a List.
+ * Room class that stores and returns the names and descriptions of rooms as Strings, items in rooms
+ * and directions rooms lead to as a List.
  */
 public class Room {
+
     private String name; // name of room as a String
     private String description; // description of room as a String
     private List<Item> items; // list of items in room
     private List<Direction> directions; // list of directions and rooms they lead to from a room
+    private String imageUrl; // urls of room images
+    private String videoUrl; // urls of room videos
 
     public String getName() {
         return name;
@@ -38,8 +42,17 @@ public class Room {
         items.add(item);
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
     /**
      * Helper method that prints out all available directions from a room.
+     *
      * @throws NullPointerException when directions is null
      */
     public void printAvailableDirections() {
@@ -62,9 +75,10 @@ public class Room {
 
     /**
      * Helper method that prints out all available items in a room.
+     *
      * @param room as a Room
      */
-    public void printAvailableItems(Room room) {
+    public String printAvailableItems(Room room) {
         String availableItems = "Items available: ";
         for (int i = 0; i < room.getItems().size(); i++) {
             if (i <= room.getItems().size() - 2) {
@@ -73,7 +87,8 @@ public class Room {
                 availableItems += room.getItems().get(i).getItemName() + ".";
             }
         }
-        System.out.println(availableItems);
+        //System.out.println(availableItems);
+        return availableItems;
     }
 
 
