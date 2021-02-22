@@ -1,31 +1,16 @@
 package student.server;
 
-import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.SortedMap;
-import java.util.stream.Collectors;
-import javax.swing.plaf.nimbus.State;
 import student.adventure.GameCommand;
 import student.adventure.GameEngine;
-import student.adventure.Room;
+import student.adventure.Item;
 
 public class HendrickService implements AdventureService {
-
-    private int id;
-    private Map<Integer, GameEngine> map;
-
-
-    /**
-     * Constructor that initializes game id and game map.
-     */
-    public HendrickService() {
-        id = 0;
-        map = new HashMap<>();
-    }
+    private int id = 0;
+    private Map<Integer, GameEngine> map = new HashMap<>();
 
     @Override
     public void reset() {
@@ -36,18 +21,48 @@ public class HendrickService implements AdventureService {
 
     @Override
     public int newGame() throws AdventureException {
+        GameEngine gameEngine = new GameEngine();
         try {
             System.out.println("New Game");
-            map.put(id, new GameEngine(id));
+            map.put(id, gameEngine);
         } catch (Exception e) {
-            throw new AdventureException("Adventure Exception");
+//            throw new AdventureException("Adventure Exception");
         }
         return id++;
     }
 
     @Override
     public GameStatus getGame(int id) {
-        return map.get(id).getGameStatus();
+        GameStatus gameStatus;
+        if (map.containsKey(id)) {
+            GameEngine gameEngine = map.get(id);
+            this.id = id;
+            String message = gameEngine.gameState.getCurrentLocation().getDescription();
+            String imageUrl = gameEngine.gameState.getCurrentLocation().getImageUrl();
+//          videoUrl = gameState.getCurrentLocation().getVideoUrl();
+            String videoUrl = "";
+            Map<String, List<String>> commandOptions = new HashMap<>();
+
+            List<String> directions = (gameEngine.gameState.getCurrentLocation().directionToList());
+
+            List<String> takeOptions = new ArrayList<>();
+            takeOptions.add(gameEngine.gameState.getCurrentLocation().
+                returnAvailableItems(gameEngine.gameState.getCurrentLocation()));
+
+            List<String> dropOptions = new ArrayList<>();
+            for (Item item: gameEngine.gameState.getInventory()) {
+                dropOptions.add(item.getItemName());
+            }
+
+            commandOptions.put("go", directions);
+            commandOptions.put("take", takeOptions);
+            commandOptions.put("drop", dropOptions);
+
+            gameStatus = new GameStatus(false, id, message, imageUrl, videoUrl, new AdventureState(), commandOptions);
+        } else {
+            gameStatus = new GameStatus(true, id, "","","",new AdventureState(), new HashMap<>());
+        }
+        return gameStatus;
     }
 
     @Override

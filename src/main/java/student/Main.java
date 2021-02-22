@@ -21,7 +21,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         HttpServer server = AdventureServer.createServer(AdventureResource.class);
         server.start();
-        GameEngine gameEngine = new GameEngine(0);
+        GameEngine gameEngine = new GameEngine();
         gameEngine.game();
     }
 }

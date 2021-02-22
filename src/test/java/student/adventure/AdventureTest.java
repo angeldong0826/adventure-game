@@ -5,13 +5,10 @@ import com.google.gson.Gson;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.List;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,8 +32,8 @@ public class AdventureTest {
         currentRoom = layout.getRooms().get(0);
         nextRoom = null;
         gameState = new GameState(currentRoom, new ArrayList<>());
-        gameEngine = new GameEngine(id);
-        GameEngine.variable();
+        gameEngine = new GameEngine();
+        gameEngine.variable();
     }
 
     @Test(expected = IndexOutOfBoundsException.class)

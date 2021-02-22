@@ -49,13 +49,13 @@ public class GameState {
      * @return updated/new current room as a Room
      * @throws NullPointerException if layout, direction, or currentRoom input is null
      */
-    public static Room updateCurrentRoom(Layout layout, String direction, Room currentRoom) {
+    public Room updateCurrentRoom(GameState gameState, Layout layout, String direction, Room currentRoom) {
         if (layout == null || direction == null || currentRoom == null) {
             throw new NullPointerException();
         }
         Room updatedRoom = null;
         String updatedRoomName;
-        List<Direction> directionList = GameEngine.gameState.getCurrentLocation().getDirections();
+        List<Direction> directionList = gameState.getCurrentLocation().getDirections();
         for (int i = 0; i < directionList.size(); i++) {
             Direction directionName = directionList.get(i);
             if (directionName.getDirectionName().equalsIgnoreCase(direction)) {
@@ -113,7 +113,7 @@ public class GameState {
             throw new NullPointerException();
         }
         boolean itemInInventory = false;
-        for (int i = 0; i < GameEngine.gameState.getInventory().size(); i++) {
+        for (int i = 0; i < getInventory().size(); i++) {
             if (inventory.get(i).getItemName().equalsIgnoreCase(itemName)) {
                 Item item = inventory.get(i);
                 inventory.remove(item);

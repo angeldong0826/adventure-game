@@ -1,6 +1,7 @@
 package student.adventure;
 
 import com.google.gson.JsonSyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,12 +75,20 @@ public class Room {
         return availableDirections;
     }
 
+    public List<String> directionToList() {
+        List<String> directionList = new ArrayList<>();
+        for (Direction direction: directions) {
+            directionList.add(direction.getDirectionName());
+        }
+        return directionList;
+    }
+
     /**
      * Helper method that prints out all available items in a room.
      *
      * @param room as a Room
      */
-    public String printAvailableItems(Room room) {
+    public String returnAvailableItems(Room room) {
         String availableItems = "";
         for (int i = 0; i < room.getItems().size(); i++) {
             if (i <= room.getItems().size() - 2) {
