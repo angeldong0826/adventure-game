@@ -39,8 +39,7 @@ public class HendrickService implements AdventureService {
             this.id = id;
             String message = gameEngine.gameState.getCurrentLocation().getDescription();
             String imageUrl = gameEngine.gameState.getCurrentLocation().getImageUrl();
-//          videoUrl = gameState.getCurrentLocation().getVideoUrl();
-            String videoUrl = "";
+            String videoUrl = gameEngine.gameState.getCurrentLocation().getVideoUrl();
             Map<String, List<String>> commandOptions = new HashMap<>();
 
             List<String> directions = gameEngine.gameState.getCurrentLocation().directionToList();
