@@ -43,19 +43,18 @@ public class HendrickService implements AdventureService {
             String videoUrl = "";
             Map<String, List<String>> commandOptions = new HashMap<>();
 
-            List<String> directions = (gameEngine.gameState.getCurrentLocation().directionToList());
+            List<String> directions = gameEngine.gameState.getCurrentLocation().directionToList();
 
-            List<String> takeOptions = new ArrayList<>();
-            takeOptions.add(gameEngine.gameState.getCurrentLocation().
-                returnAvailableItems(gameEngine.gameState.getCurrentLocation()));
+            List<String> items = gameEngine.gameState.getCurrentLocation().itemToList();
+
 
             List<String> dropOptions = new ArrayList<>();
-            for (Item item: gameEngine.gameState.getInventory()) {
-                dropOptions.add(item.getItemName());
+            for (Item inventory: gameEngine.gameState.getInventory()) {
+                dropOptions.add(inventory.getItemName());
             }
 
             commandOptions.put("go", directions);
-            commandOptions.put("take", takeOptions);
+            commandOptions.put("take", items);
             commandOptions.put("drop", dropOptions);
 
             gameStatus = new GameStatus(false, id, message, imageUrl, videoUrl, new AdventureState(), commandOptions);

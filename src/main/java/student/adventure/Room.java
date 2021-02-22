@@ -101,6 +101,14 @@ public class Room {
         return availableItems;
     }
 
+    public List<String> itemToList() {
+        List<String> itemList = new ArrayList<>();
+        for (Item item: items) {
+            itemList.add(item.getItemName());
+        }
+        return itemList;
+    }
+
 
     public static Map<String, Item> createItemDictionary(Room room) {
         Map<String, Item> itemDictionary = new HashMap<>();

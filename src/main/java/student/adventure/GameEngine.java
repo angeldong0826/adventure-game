@@ -142,6 +142,9 @@ public class GameEngine {
                     gameState.getCurrentLocation().printAvailableDirections();
                     gameState.getCurrentLocation()
                         .returnAvailableItems(gameState.getCurrentLocation());
+                } else if (gameState.getCurrentLocation().getName().equalsIgnoreCase(layout.getEndingRoom())) {
+                    System.out.println("Congrats! You successfully reached the ending room. Game Over :)");
+                    done = true;
                 }
             }
         }
@@ -154,12 +157,6 @@ public class GameEngine {
         if (name.equalsIgnoreCase("drop")) {
             gameState.drop(value);
             isCommandValid = true;
-        }
-
-        // end case for game when player reaches ending room.
-        if (gameState.getCurrentLocation().getName().equalsIgnoreCase(layout.getEndingRoom())) {
-            System.out.println("Congrats! You successfully reached the ending room. Game Over :)");
-            done = true;
         }
         return isCommandValid;
     }
