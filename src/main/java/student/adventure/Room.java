@@ -55,8 +55,8 @@ public class Room {
      *
      * @throws NullPointerException when directions is null
      */
-    public void printAvailableDirections() {
-        String availableDirections = "From here, you can go: ";
+    public String printAvailableDirections() {
+        String availableDirections = "";
         if (directions == null) {
             throw new NullPointerException();
         }
@@ -67,10 +67,11 @@ public class Room {
             if (i <= directions.size() - 2) {
                 availableDirections += directions.get(i).getDirectionName() + ", ";
             } else if (i == directions.size() - 1) {
-                availableDirections += directions.get(i).getDirectionName() + ".";
+                availableDirections += directions.get(i).getDirectionName();
             }
         }
-        System.out.println(availableDirections);
+        System.out.println("From here, you can go: " + availableDirections);
+        return availableDirections;
     }
 
     /**
@@ -79,15 +80,15 @@ public class Room {
      * @param room as a Room
      */
     public String printAvailableItems(Room room) {
-        String availableItems = "Items available: ";
+        String availableItems = "";
         for (int i = 0; i < room.getItems().size(); i++) {
             if (i <= room.getItems().size() - 2) {
                 availableItems += room.getItems().get(i).getItemName() + ", ";
             } else if (i == room.getItems().size() - 1) {
-                availableItems += room.getItems().get(i).getItemName() + ".";
+                availableItems += room.getItems().get(i).getItemName();
             }
         }
-        //System.out.println(availableItems);
+        System.out.println("Items available: " + availableItems);
         return availableItems;
     }
 

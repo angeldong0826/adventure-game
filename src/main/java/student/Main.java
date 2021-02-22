@@ -1,7 +1,8 @@
-package student.adventure;
+package student;
 
 import java.io.IOException;
 import org.glassfish.grizzly.http.server.HttpServer;
+import student.adventure.GameEngine;
 import student.server.AdventureResource;
 import student.server.AdventureServer;
 

@@ -15,7 +15,6 @@ public class GameState {
     private Layout layout;
 
 
-    // DONT PRINT IN THIS CLASS
     public GameState(Room setCurrentLocation, List<Item> setInventory) {
         currentRoom = setCurrentLocation;
         inventory = setInventory;
@@ -130,42 +129,3 @@ public class GameState {
         return itemInInventory;
     }
 }
-
-//public class GameState {
-//    private String currentRoom; // current room that player is in
-//    private List<String> inventory; // current inventory that player has
-//
-//    /**
-//     * Constructor for current room and inventory.
-//     * @param currentRoom as a String
-//     * @param inventory as an ArrayList
-//     */
-//    public GameState(String currentRoom, List<String> inventory) {
-//        this.currentRoom = currentRoom;
-//        this.inventory = inventory;
-//    }
-//
-//    /**
-//     * Constructor to set the starting room.
-//     * @param startingRoom as a String
-//     */
-//    public GameState(String startingRoom) {
-//        currentRoom = startingRoom;
-//        inventory = new ArrayList<>();
-//    }
-//
-//    public String getCurrentRoom() {
-//        return currentRoom;
-//    }
-//
-//    public List<String> getInventory() {
-//        return new ArrayList<>(inventory);
-//    }
-//
-//    /**
-//     * Method to update current room as player moves in game.
-//     * @param room as a String
-//     */
-//    public void updateRoom(String room) {
-//        this.currentRoom = room;
-//    }

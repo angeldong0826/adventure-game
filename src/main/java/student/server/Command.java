@@ -20,7 +20,6 @@ public class Command {
     private String playerName;
 
     public Command() {
-
     }
 
     public Command(String commandName, String commandValue) {

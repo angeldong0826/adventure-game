@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.stream.Collectors;
 import javax.swing.plaf.nimbus.State;
+import student.adventure.GameCommand;
 import student.adventure.GameEngine;
 import student.adventure.Room;
 
@@ -16,23 +17,14 @@ public class HendrickService implements AdventureService {
 
     private int id;
     private Map<Integer, GameEngine> map;
-    //private Map<String, List<String>> commandOptions;
 
-    private final static String DATABASE_URL = "jdbc:sqlite:src/main/resources/adventure.db";
-    private Connection dbConnection;
 
     /**
-     * Constructor that initializes game instance ID and map.
+     * Constructor that initializes game id and game map.
      */
     public HendrickService() {
         id = 0;
         map = new HashMap<>();
-
-        try {
-            dbConnection = DriverManager.getConnection(DATABASE_URL);
-        } catch (SQLException e) {
-            dbConnection = null;
-        }
     }
 
     @Override
@@ -66,40 +58,9 @@ public class HendrickService implements AdventureService {
 
     @Override
     public void executeCommand(int id, Command command) {
-
+        System.out.println("Execute Command");
+        GameCommand gameCommand = new GameCommand(command.getCommandName(),
+            command.getCommandValue());
+        map.get(id).inputExecute(gameCommand);
     }
-
-//    @Override
-//    public SortedMap<String, Integer> fetchLeaderboard() {
-//        System.out.println("Fetch Leaderboard");
-//        try {
-//            Statement statement = dbConnection.createStatement();
-//            statement.execute("SELECT * FROM board_");
-//        } catch (SQLException e) {
-//            return null;
-//        }
-//    }
-//
-//    /**
-//     * Helper method for sorting the leaderboard for fetchLeaderboard.
-//     *
-//     * @param boardToSet to be set
-//     * @return sorted leader board as a linked hashmap
-//     */
-//    private LinkedHashMap<String, Integer> sortLeaderBoard(ResultSet boardToSet) {
-//        Map<String, Integer> board = new HashMap<>();
-//
-//        try {
-//            while (boardToSet.next()) {
-//                String name = boardToSet.getString(1);
-//                int score = boardToSet.getInt(2);
-//                board.put(name, score);
-//            }
-//        } catch (SQLException e) {
-//            return null;
-//        }
-//        return board.entrySet().stream().sorted(Map.Entry.comparingByValue()).collect(
-//            Collectors
-//                .toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-//    }
 }

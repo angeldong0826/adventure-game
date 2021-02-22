@@ -25,17 +25,18 @@ public class GameCommand {
         String[] splitCommand = command
             .split("\\s+"); // to hold input split by whitespaces in an arraylist
         String name = "";
-        StringBuilder value = new StringBuilder();
+        String value = "";
 
         if (splitCommand.length > 0) {
             name = splitCommand[0];
+            value = splitCommand[splitCommand.length - 1];
 
-            for (int index = 1; index < splitCommand.length; index++) {
-                value.append(splitCommand[index]);
-                // value.append(splitCommand[index] + " ");
-            }
+//            for (int index = 1; index < splitCommand.length; index++) {
+//                value.append(splitCommand[index]);
+//                // value.append(splitCommand[index] + " ");
+//            }
         }
         commandName = name;
-        commandValue = value.toString();
+        commandValue = value;
     }
 }
