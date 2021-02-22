@@ -3,7 +3,7 @@ package student.adventure;
 import com.google.gson.JsonSyntaxException;
 
 /**
- * Direction class that stores and returns direction names and rooms directions lead to as Strings.
+ * Direction class that initializes direction names and rooms that directions lead to as Strings.
  */
 public class Direction {
 

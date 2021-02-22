@@ -32,14 +32,6 @@ public class GameState {
         return inventory;
     }
 
-    public void setInventory(List<Item> inventory) {
-        this.inventory = inventory;
-    }
-
-    public void addItem(Item item) {
-        inventory.add(item);
-    }
-
     /**
      * Helper method that updates and returns a new current room.
      *
@@ -85,12 +77,13 @@ public class GameState {
         if (itemName == null) {
             throw new NullPointerException();
         }
+        String itemNameLowercase = itemName.toLowerCase();
         boolean itemInRoom = false;
         for (int i = 0; i < currentRoom.getItems().size(); i++) {
-            if (currentRoom.getItems().get(i).getItemName().equalsIgnoreCase(itemName)) {
-                inventory.add(itemDictionary.get(itemName));
+            if (currentRoom.getItems().get(i).getItemName().equalsIgnoreCase(itemNameLowercase)) {
+                inventory.add(itemDictionary.get(itemNameLowercase));
                 System.out.println("Item " + itemName + " taken.");
-                currentRoom.removeItem(itemDictionary.get(itemName));
+                currentRoom.removeItem(itemDictionary.get(itemNameLowercase));
                 itemInRoom = true;
                 break;
             }

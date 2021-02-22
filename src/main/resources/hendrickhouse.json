@@ -20,7 +20,7 @@
     },
     {
       "name": "Main Entrance",
-      "description": "You are in the main entrance of Hendrick House. You can see the front desk, stairs leading to the basement, and hallways to the east and west buildings.",
+      "description": "You are in the main entrance of Hendrick House. You can see the front desk, \nstairs leading to the basement, and hallways to the east and west buildings.",
       "imageUrl": "https://www.hendrickhouse.com/wp-content/uploads/2019/04/2-1024x736.jpg",
       "items": [
         {
@@ -52,7 +52,7 @@
     },
     {
       "name": "Front Desk",
-      "description": "You are at the front desk, where you can find lovely staffs who can assist you with pretty much anything.",
+      "description": "You are at the front desk, where you can find lovely staffs who can assist you\n with pretty much anything.",
       "imageUrl": "https://www.winona.edu/housing/Images/WSU-housing-Maria-frontdesk.jpg",
       "items": [
         {
@@ -93,7 +93,7 @@
     },
     {
       "name": "Basement Lounge",
-      "description": "You are in the basement lounge. There are study tables and seats. You can see the computer room and a hallway leading to the east laundry room, the gym, and the east elevators.",
+      "description": "You are in the basement lounge. There are study tables and seats. You can see \nthe computer room and a hallway leading to the east laundry room, the gym, and the east elevators.",
       "imageUrl": "https://www.hendrickhouse.com/wp-content/uploads/2019/04/14-1024x768.jpg",
       "items": [
         {
@@ -133,7 +133,7 @@
     },
     {
       "name": "East Basement Hallway",
-      "description": "You are in the east basement hallway. You can see the east laundry room, the gym, and the east elevators.",
+      "description": "You are in the east basement hallway. You can see the east laundry room, the \ngym, and the east elevators.",
       "imageUrl": "https://www.hendrickhouse.com/wp-content/uploads/2019/04/15-768x1024.jpg",
       "items": [],
       "directions": [
@@ -157,7 +157,7 @@
     },
     {
       "name": "East Laundry Room",
-      "description": "You are in the east laundry room.  There are 4 washers and dryers. And piles of clothes, dirty and clean.",
+      "description": "You are in the east laundry room.  There are 4 washers and dryers. And piles \nof clothes, dirty and clean.",
       "imageUrl": "https://i.pinimg.com/originals/df/12/3c/df123cd949a18e92c1cd734318b6e5eb.jpg",
       "items": [
         {
@@ -179,7 +179,7 @@
     },
     {
       "name": "East Elevators Basement Floor",
-      "description": "You are in one of the two elevators of the east building. The close and open door buttons do not work and the elevators are heckin' slow :') However you can go up up to 6th floor.",
+      "description": "You are in one of the two elevators of the east building. The close and open \ndoor buttons do not work and the elevators are heckin' slow :') However you can go up up to 6th floor.",
       "imageUrl": "https://i1.sndcdn.com/artworks-000055961957-8wyhjb-t500x500.jpg",
       "items": [
         {
@@ -195,7 +195,7 @@
     },
     {
       "name": "Gym",
-      "description": "You are in the gym. As you can tell, it's a pretty jank gym. But it works well with covid cuz it's private and is relatively less exposed to covid.",
+      "description": "You are in the gym. As you can tell, it's a pretty jank gym. But it works well\n with covid cuz it's private and is relatively less exposed to covid.",
       "imageUrl": "https://www.hendrickhouse.com/wp-content/uploads/2019/04/16-1024x768.jpg",
       "items": [
         {
@@ -246,7 +246,7 @@
     },
     {
       "name": "Cafeteria",
-      "description": "You are in the cafeteria. You see a long line of people waiting to get food. You also see the east elevators.",
+      "description": "You are in the cafeteria. You see a long line of people waiting to get food. \nYou also see the east elevators.",
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3aUb4PYRVtF_ndaDiJoBctLnSfDM3ARdmWw&usqp=CAU",
       "items": [
         {
@@ -278,7 +278,7 @@
     },
     {
       "name": "East Elevators First Floor",
-      "description": "You are in one of the two elevators of the east building. The close and open door buttons do not work and the elevators are heckin' slow :') However, you can go up up to 6th floor and down to basement.",
+      "description": "You are in one of the two elevators of the east building. The close and open \ndoor buttons do not work and the elevators are heckin' slow :') However, you can go up up to 6th floor and down to basement.",
       "imageUrl": "https://i1.sndcdn.com/artworks-000055961957-8wyhjb-t500x500.jpg",
       "items": [
         {
@@ -332,7 +332,7 @@
     },
     {
       "name": "West Lounge",
-      "description": "You are in the west lounge. There are 4 study tables and you can see the west elevators.",
+      "description": "You are in the west lounge. There are 4 study tables and you can see the west \nelevators.",
       "imageUrl": "http://blog.admissions.uiowa.edu/kelsey/files/2020/09/IMG_3860-1024x644.jpg",
       "items": [
         {
@@ -352,7 +352,7 @@
     },
     {
       "name": "West Elevators First Floor",
-      "description": "You are in one of the two west elevators. The better elevators :') The buttons actually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
+      "description": "You are in one of the two west elevators. The better elevators :') The buttons \nactually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
       "imageUrl": "https://i.pinimg.com/564x/48/4d/34/484d34080826e5d76685d23b14035198.jpg",
       "items": [
         {
@@ -372,7 +372,7 @@
     },
     {
       "name": "West Elevators Seventh Floor",
-      "description": "You are in one of the two west elevators. The better elevators :') The buttons actually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
+      "description": "You are in one of the two west elevators. The better elevators :') The buttons \nactually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
       "imageUrl": "https://i.pinimg.com/564x/48/4d/34/484d34080826e5d76685d23b14035198.jpg",
       "items": [
         {

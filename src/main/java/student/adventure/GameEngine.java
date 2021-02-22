@@ -21,9 +21,6 @@ public class GameEngine {
     private Room nextRoom;
     public GameState gameState;
 
-    private List<String> currentInventory;
-    private List<String> locationHistory;
-
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -37,33 +34,10 @@ public class GameEngine {
     }
 
 
-    /**
-     * GameEngine constructor that loads instance variables based on game id.
-     * @throws IOException when input or output operation fails
-     */
     public GameEngine() {
-//        Gson gson = new Gson();
-//        Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
-//        layout = gson.fromJson(reader, Layout.class);
-//
-//        currentRoom = layout.getRooms().get(0); // to hold the current room.
-//        nextRoom = null; // to hold the next room for my updateCurrentRoom method.
-//        gameState = new GameState(currentRoom, new ArrayList<>());
-//        boolean done = false; // boolean to control status of game.
         variable();
-
-        currentInventory = new ArrayList<>(); // list of current inventory
-        locationHistory = new ArrayList<>(); // list of location history
-
-
     }
 
-//    /**
-//     * Class that makes command options.
-//     */
-//    public void createCommandOptions() {
-//
-//    }
 
     public void variable() {
         try {
@@ -89,7 +63,7 @@ public class GameEngine {
 
         System.out.println(gameState.getCurrentLocation().getDescription());
         gameState.getCurrentLocation().printAvailableDirections();
-        gameState.getCurrentLocation().returnAvailableItems(gameState.getCurrentLocation());
+        gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
 
         while (!done) {
             System.out.print("> ");
@@ -105,8 +79,8 @@ public class GameEngine {
         String value = command.getCommandValue();
         boolean isCommandValid = false;
 
-        if (name.equalsIgnoreCase("quit") || name
-            .equalsIgnoreCase("exit")) { // quitting the game.
+        if (name.equalsIgnoreCase("quit") ||
+            name.equalsIgnoreCase("exit")) { // quitting the game.
             System.out.println("You have " + name + " the game.");
             done = true;
             return true;
@@ -115,7 +89,7 @@ public class GameEngine {
         if (name.equalsIgnoreCase("examine")) {
             System.out.println(gameState.getCurrentLocation().getDescription());
             gameState.getCurrentLocation().printAvailableDirections();
-            gameState.getCurrentLocation().returnAvailableItems(gameState.getCurrentLocation());
+            gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
             isCommandValid = true;
         }
 
@@ -129,22 +103,20 @@ public class GameEngine {
 
         if (name.equalsIgnoreCase("go")) {
 
-            System.out.println("value: " + value);
+            //System.out.println("value: " + value);
             nextRoom = gameState.updateCurrentRoom(gameState, layout, value, gameState.getCurrentLocation());
             if (nextRoom == null) {
                 System.out.println("You can't go " + value + "!");
             } else {
                 gameState.setCurrentLocation(nextRoom);
                 isCommandValid = true;
+
                 System.out.println(gameState.getCurrentLocation().getDescription());
                 if (!(gameState.getCurrentLocation().getName()
                     .equalsIgnoreCase(layout.getEndingRoom()))) {
                     gameState.getCurrentLocation().printAvailableDirections();
                     gameState.getCurrentLocation()
-                        .returnAvailableItems(gameState.getCurrentLocation());
-                } else if (gameState.getCurrentLocation().getName().equalsIgnoreCase(layout.getEndingRoom())) {
-                    System.out.println("Congrats! You successfully reached the ending room. Game Over :)");
-                    done = true;
+                        .printAvailableItems(gameState.getCurrentLocation());
                 }
             }
         }
@@ -158,6 +130,14 @@ public class GameEngine {
             gameState.drop(value);
             isCommandValid = true;
         }
+
+        // winning case
+        if (gameState.getCurrentLocation().getName().equalsIgnoreCase(layout.getEndingRoom())) {
+            System.out.println("Congrats! You successfully reached the ending room. Game Over :)");
+            done = true;
+        }
+
         return isCommandValid;
+
     }
 }

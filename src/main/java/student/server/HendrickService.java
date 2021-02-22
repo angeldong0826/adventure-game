@@ -73,7 +73,7 @@ public class HendrickService implements AdventureService {
     @Override
     public void executeCommand(int id, Command command) {
         System.out.println("Execute Command");
-        GameCommand gameCommand = new GameCommand(command.getCommandName(),
+        GameCommand gameCommand =  new GameCommand(command.getCommandName(),
             command.getCommandValue());
         map.get(id).inputExecute(gameCommand);
     }

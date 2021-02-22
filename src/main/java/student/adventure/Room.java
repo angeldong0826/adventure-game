@@ -4,6 +4,7 @@ import com.google.gson.JsonSyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -56,7 +57,7 @@ public class Room {
      *
      * @throws NullPointerException when directions is null
      */
-    public String printAvailableDirections() {
+    public void printAvailableDirections() {
         String availableDirections = "";
         if (directions == null) {
             throw new NullPointerException();
@@ -72,7 +73,6 @@ public class Room {
             }
         }
         System.out.println("From here, you can go: " + availableDirections);
-        return availableDirections;
     }
 
     public List<String> directionToList() {
@@ -88,7 +88,7 @@ public class Room {
      *
      * @param room as a Room
      */
-    public String returnAvailableItems(Room room) {
+    public void printAvailableItems(Room room) {
         String availableItems = "";
         for (int i = 0; i < room.getItems().size(); i++) {
             if (i <= room.getItems().size() - 2) {
@@ -98,7 +98,6 @@ public class Room {
             }
         }
         System.out.println("Items available: " + availableItems);
-        return availableItems;
     }
 
     public List<String> itemToList() {
