@@ -36,6 +36,14 @@ public class Room {
         return directions;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
     public void removeItem(Item item) {
         items.remove(item);
     }
@@ -44,12 +52,14 @@ public class Room {
         items.add(item);
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public String getVideoUrl() {
-        return videoUrl;
+    /**
+     * Method to test for valid room.
+     */
+    public void isValidRoom() {
+        if (name == null || description == null || items == null || directions == null ||
+            imageUrl == null || videoUrl == null) {
+            throw new NullPointerException();
+        }
     }
 
     /**

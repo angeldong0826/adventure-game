@@ -1,6 +1,7 @@
 package student.adventure;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,17 +22,10 @@ public class GameEngine {
     private Room nextRoom;
     public GameState gameState;
     private List<String> locationHistory = new ArrayList<>();
+    public String DEFAULT_JSON = "src/main/resources/hendrickhouse.json";
 
     public List<String> getLocationHistory() {
         return locationHistory;
-    }
-
-    public String locationHistoryToString() {
-        String[] historyToReturn = new String[locationHistory.size()];
-        for (int i = 0; i < historyToReturn.length; i++) {
-            historyToReturn[i] = locationHistory.get(i);
-        }
-        return String.join(", ", historyToReturn);
     }
 
     public Room getCurrentRoom() {
@@ -46,16 +40,63 @@ public class GameEngine {
         this.currentRoom = currentRoom;
     }
 
-    public GameEngine() {
-        variable();
+    /**
+     * Method that casts my arraylist of location history into a String in order to pass into server.
+     * @return location history as a String
+     */
+    public String locationHistoryToString() {
+        String[] historyToReturn = new String[locationHistory.size()];
+        for (int i = 0; i < historyToReturn.length; i++) {
+            historyToReturn[i] = locationHistory.get(i);
+        }
+        return String.join(", ", historyToReturn);
     }
 
-    public void variable() {
-        try {
-            Gson gson = new Gson();
-            Reader reader = new FileReader("src/main/resources/hendrickhouse.json");
-            layout = gson.fromJson(reader, Layout.class);
-        } catch (Exception e) {}
+    /**
+     * Constructor that calls on the initiated variables.
+     */
+    public GameEngine() throws FileNotFoundException {
+        variable(DEFAULT_JSON);
+    }
+
+    /**
+     * Method that stores initial values that game calls on.
+     */
+    public void variable(String fileName) throws FileNotFoundException {
+        Gson gson = new Gson();
+        if (fileName == null) {
+            throw new NullPointerException();
+        }
+        if (fileName.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
+        // deserialization
+        Reader reader = new FileReader(fileName);
+        layout = gson.fromJson(reader, Layout.class);
+
+        if (layout == null) {
+            throw new NullPointerException();
+        }
+        layout.isValidLayout();
+
+        List<Room> rooms = layout.getRooms();
+        List<String> roomNames = new ArrayList<>();
+        for (Room room : rooms) {
+            room.isValidRoom();
+            roomNames.add(room.getName());
+        }
+        for (Room room : rooms) {
+            for (Direction direction : room.getDirections()) {
+                direction.isValidDirection();
+                    if (!roomNames.contains(direction.getRoom())) {
+                        throw new JsonSyntaxException("Direction leads to invalid room.");
+                    }
+            }
+            for (Item item : room.getItems()) {
+                item.isValidItem();
+            }
+        }
 
         currentRoom = layout.getRooms().get(0); // to hold the current room.
         nextRoom = null; // to hold the next room for my updateCurrentRoom method.
@@ -65,12 +106,10 @@ public class GameEngine {
     }
 
     /**
-     * Game method in the game class that calls on the game.
-     *
-     * @throws FileNotFoundException when no JSON file is found
+     * Console method in the game class that calls on the game.
      */
-    public void game() throws FileNotFoundException { // RENAME
-        variable();
+    public void console() throws FileNotFoundException {
+        variable(DEFAULT_JSON);
         Scanner scan = new Scanner(System.in);
 
         System.out.println(gameState.getCurrentLocation().getDescription());
@@ -84,7 +123,11 @@ public class GameEngine {
         }
     }
 
-
+    /**
+     * Method that executes users' input commands
+     * @param command as a GameCommand
+     * @return
+     */
     public boolean inputExecute(GameCommand command) {
 
         String name = command.getCommandName();

@@ -37,4 +37,13 @@ public class Layout {
     public List<Room> getRooms() {
         return rooms;
     }
+
+    /**
+     * Method to test for valid layout.
+     */
+    public void isValidLayout() {
+        if (startingRoom == null || endingRoom == null || rooms == null) {
+            throw new NullPointerException();
+        }
+    }
 }

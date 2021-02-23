@@ -5,10 +5,14 @@ import com.google.gson.Gson;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import com.google.gson.JsonSyntaxException;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
+import javax.validation.constraints.Null;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,23 +21,28 @@ public class AdventureTest {
 
     Gson gson;
     Reader reader;
-    GameEngine gameEngine;
+    GameEngine gameEngine = new GameEngine();
     Layout layout;
     GameState gameState;
     Room currentRoom;
     Room nextRoom;
     int id;
+    GameCommand gameCommand;
+
+    public AdventureTest() throws FileNotFoundException {
+
+    }
 
     @Before
     public void setUp() throws IOException {
         gson = new Gson();
-        reader = new FileReader("src/main/resources/hendrickhouse.json");
+        reader = new FileReader(gameEngine.DEFAULT_JSON);
         layout = gson.fromJson(reader, Layout.class);
         currentRoom = layout.getRooms().get(0);
         nextRoom = null;
         gameState = new GameState(currentRoom, new ArrayList<>());
         gameEngine = new GameEngine();
-        gameEngine.variable();
+        gameEngine.variable(gameEngine.DEFAULT_JSON);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
@@ -41,31 +50,75 @@ public class AdventureTest {
         layout.getRooms().get(ROOM_COUNT); // checks if room count is out of bounds and not match up with the json file.
     }
 
-//    @Test
-//    public void test_goValidDirection() {
-//        GameEngine.inputExecute("go   noRtH");
-//        assertEquals("Main Entrance", GameEngine.gameState.getCurrentLocation().getName());
-//    }
-//
-//    @Test
-//    public void test_goInvalidDirection() {
-//        GameEngine.inputExecute(" go SOUTh");
-//        assertEquals("Green Street", GameEngine.gameState.getCurrentLocation().getName());
-//    }
-//
-//    @Test
-//    public void test_takeUnavailableItem() {
-//        GameEngine.inputExecute(" take handsanitizer");
-//        List<Item> item = new ArrayList<>();
-//        Assert.assertEquals(item, GameEngine.gameState.getInventory());
-//    }
-//
-//    @Test
-//    public void test_takeAvailableItem() {
-//        GameEngine.inputExecute("take  glassdoor");
-//        List<Item> item = new ArrayList<>();
-//        Assert.assertEquals(item, GameEngine.gameState.getCurrentLocation().getItems());
-//    }
+    // Json test units
+    @Test(expected = NullPointerException.class)
+    public void test_invalidJson() throws FileNotFoundException {
+        gameEngine.variable("src/main/resources/siebel.json");
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void test_nullJson() throws FileNotFoundException {
+        gameEngine.variable(null);
+    }
+
+    @Test(expected = FileNotFoundException.class)
+    public void test_invalidJsonName() throws FileNotFoundException {
+        gameEngine.variable("thisisaninvalidjson");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test_emptyJsonName() throws FileNotFoundException {
+        gameEngine.variable("");
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void test_emptyJsonFile() throws FileNotFoundException {
+        gameEngine.variable("src/main/resources/empty.json");
+    }
+
+    @Test(expected = JsonSyntaxException.class)
+    public void test_malfunctionJson() throws FileNotFoundException {
+        gameEngine.variable("src/main/resources/malformedjson.json");
+    }
+
+    @Test(expected = JsonSyntaxException.class)
+    public void test_badHendrickJson() throws FileNotFoundException {
+        gameEngine.variable("src/main/resources/badhendrickhouse.json");
+    }
+
+    @Test
+    public void test_validJson() throws FileNotFoundException {
+        gameEngine.variable("src/main/resources/hendrickhouse.json");
+    }
+
+    // test white spaces
+    @Test
+    public void test_whiteSpaceBeforeCommand() {
+        gameCommand = new GameCommand("   go  nORtH");
+        gameEngine.inputExecute(gameCommand);
+        assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
+    }
+
+    @Test
+    public void test_whiteSpaceBetweenCommand() {
+        gameCommand = new GameCommand("go            nORtH");
+        gameEngine.inputExecute(gameCommand);
+        assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
+    }
+
+    @Test
+    public void test_whiteSpaceAfterCommand() {
+        gameCommand = new GameCommand("go nORtH       ");
+        gameEngine.inputExecute(gameCommand);
+        assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
+    }
+
+    @Test
+    public void test_goValidDirection() {
+        gameCommand = new GameCommand("go nORtH");
+        gameEngine.inputExecute(gameCommand);
+        assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
+    }
 
     @Test
     public void test_roomNameDisplay() {

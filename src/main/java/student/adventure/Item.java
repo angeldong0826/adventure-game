@@ -14,4 +14,13 @@ public class Item {
     public String getItemName() {
         return itemName;
     }
+
+    /**
+     * Method to test for valid item.
+     */
+    public void isValidItem() {
+        if (itemName == null) {
+            throw new NullPointerException();
+        }
+    }
 }

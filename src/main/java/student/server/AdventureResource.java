@@ -1,5 +1,6 @@
 package student.server;
 
+import java.io.FileNotFoundException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -41,7 +42,7 @@ public class AdventureResource {
     @POST
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response create() throws AdventureException {
+    public Response create() throws AdventureException, FileNotFoundException {
         int id = service.newGame();
         return getGame(id);
     }

@@ -22,6 +22,6 @@ public class Main {
         HttpServer server = AdventureServer.createServer(AdventureResource.class);
         server.start();
         GameEngine gameEngine = new GameEngine();
-        gameEngine.game();
+        gameEngine.console();
     }
 }

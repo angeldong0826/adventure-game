@@ -1,5 +1,6 @@
 package student.server;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,8 +11,17 @@ import student.adventure.GameState;
 import student.adventure.Item;
 
 public class HendrickService implements AdventureService {
-    private int id = 0;
-    private Map<Integer, GameEngine> map = new HashMap<>();
+    private int id;
+    private Map<Integer, GameEngine> map;
+
+    public HendrickService() {
+        id = 0;
+        map = new HashMap<>();
+    }
+
+    public int getId() {
+        return id;
+    }
 
     @Override
     public void reset() {
@@ -21,13 +31,13 @@ public class HendrickService implements AdventureService {
     }
 
     @Override
-    public int newGame() throws AdventureException {
+    public int newGame() throws AdventureException, FileNotFoundException {
         GameEngine gameEngine = new GameEngine();
         try {
             System.out.println("New Game");
             map.put(id, gameEngine);
         } catch (Exception e) {
-//            throw new AdventureException("Adventure Exception");
+            throw new AdventureException("Adventure Exception");
         }
         return id++;
     }

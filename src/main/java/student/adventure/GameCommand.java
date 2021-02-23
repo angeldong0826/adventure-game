@@ -4,7 +4,6 @@ package student.adventure;
  * GameCommand class that processes information from user command input.
  */
 public class GameCommand {
-
     private final String commandName;
     private final String commandValue;
 
@@ -27,11 +26,11 @@ public class GameCommand {
     }
 
     /**
-     * Constructor that splits input command into name and value.
+     * Constructor that processes input command into name and value.
      * @param command as a String
      */
     public GameCommand(String command) {
-        String[] splitCommand = command.split("\\s+"); // to hold input split by whitespaces in an arraylist
+        String[] splitCommand = command.trim().split("\\s+"); // to hold input split by whitespaces in an Arraylist
         String name = "";
         String value = "";
 

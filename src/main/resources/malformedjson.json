@@ -1,0 +1,433 @@
+{
+  "startingRoom": "Green Street",
+  "endingRoom": "Room 1705",
+  "rooms": [
+    {
+      "name": "Green Street",
+      "description": "You are on Green Street, outside Hendrick House.",
+      "imageUrl": "https://i.ibb.co/vsDKsL0/IMG-8747-2.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "GlassDoor"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "North",
+          "room": "Main Entrance"
+        }
+      ]
+    },
+    {
+      "name": "Main Entrance",
+      "description": "You are in the main entrance of Hendrick House. You can see the front desk, \nstairs leading to the basement, and hallways to the east and west buildings.",
+      "imageUrl": "https://i.imgur.com/K3VPV7Q.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "HandSanitizer"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "South",
+          "room": "Green Street"
+        },
+        {
+          "directionName": "Northwest",
+          "room": "Front Desk"
+        },
+        {
+          "directionName": "Northeast",
+          "room": "Basement Stairs"
+        },
+        {
+          "directionName": "East",
+          "room": "East Hallway"
+        },
+        {
+          "directionName": "West",
+          "room": "West Hallway"
+        }
+      ]
+    },
+    {
+      "name": "Front Desk",
+      "description": "You are at the front desk, where you can find lovely staffs who can assist you\n with pretty much anything.",
+      "imageUrl": "https://i.imgur.com/JcTz97m.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "KeyCard"
+        },
+        {
+          "itemName": "RoomKey"
+        },
+        {
+          "itemName": "GymKey"
+        },
+        {
+          "itemName": "FriendlyStaff"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "Southeast",
+          "room": "Main Entrance"
+        }
+      ]
+    },
+    {
+      "name": "Basement Stairs",
+      "description": "You are on the stairs leading to the basement. You can see the basement lounge.",
+      "imageUrl": "https://i.imgur.com/qQAtFyG.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [],
+      "directions": [
+        {
+          "directionName": "Southwest",
+          "room": "Main Entrance"
+        },
+        {
+          "directionName": "Down",
+          "room": "Basement Lounge"
+        }
+      ]
+    },
+    {
+      "name": "Basement Lounge",
+      "description": "You are in the basement lounge. There are study tables and seats. You can see \nthe computer room and a hallway leading to the east laundry room, the gym, and the east elevators.",
+      "imageUrl": "https://i.imgur.com/YXharC9.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "StudyTables"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "Up",
+          "room": "Basement Stairs"
+        },
+        {
+          "directionName": "West",
+          "room": "Computer Room"
+        },
+        {
+          "directionName": "East",
+          "room": "East Basement Hallway"
+        }
+      ]
+    },
+    {
+      "name": "Computer Room",
+      "description": "You are in the computer room. You see 3 desktops and that's pretty much it.",
+      "imageUrl": "https://i.imgur.com/POKausu.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "Computers"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "East",
+          "room": "Basement Lounge"
+        }
+      ]
+    },
+    {
+      "name": "East Basement Hallway",
+      "description": "You are in the east basement hallway. You can see the east laundry room, the \ngym, and the east elevators.",
+      "imageUrl": "https://i.imgur.com/s0HVEjD.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [],
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "Basement Lounge"
+        },
+        {
+          "directionName": "East",
+          "room": "East Laundry Room"
+        },
+        {
+          "directionName": "South",
+          "room": "East Elevators Basement Floor"
+        },
+        {
+          "directionName": "SouthEast",
+          "room": "Gym"
+        }
+      ]
+    },
+    {
+      "name": "East Laundry Room",
+      "description": "You are in the east laundry room.  There are 4 washers and dryers. And piles \nof clothes, dirty and clean.",
+      "imageUrl": "https://i.imgur.com/KTNw4Sh.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "WashingMachines"
+        },
+        {
+          "itemName": "Dryers"
+        },
+        {
+          "itemName": "DirtyClothes"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "East Basement Hallway"
+        }
+      ]
+    },
+    {
+      "name": "East Elevators Basement Floor",
+      "description": "You are in one of the two elevators of the east building. The close and open \ndoor buttons do not work and the elevators are heckin' slow :') However you can go up up to 6th floor.",
+      "imageUrl": "https://i.imgur.com/7aDQG6C.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "BrokenFloorButtons!"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "North",
+          "room": "East Basement Hallway"
+        },
+        {
+          "directionName": "Up",
+          "room": "East Elevators First Floor"
+        }
+      ]
+    },
+    {
+      "name": "Gym",
+      "description": "You are in the gym. As you can tell, it's a pretty jank gym. But it works well\n with covid cuz it's private and is relatively less exposed to covid.",
+      "imageUrl": "https://i.imgur.com/8kVAIDi.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "Treadmill"
+        },
+        {
+          "itemName": "FreeWeights"
+        },
+        {
+          "itemName": "Elliptical"
+        },
+        {
+          "itemName": "IndoorBike"
+        },
+        {
+          "itemName": "YogaMats"
+        },
+        {
+          "itemName": "Tears"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "Northwest",
+          "room": "East Basement Hallway"
+        }
+      ]
+    },
+    {
+      "name": "East Hallway",
+      "description": "You are in the east hallway. You see the cafeteria and the east lounge.",
+      "imageUrl": "https://i.imgur.com/Cv7qfxc.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [],
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "Main Entrance"
+        },
+        {
+          "directionName": "North",
+          "room": "Cafeteria"
+        },
+        {
+          "directionName": "East",
+          "room": "East Lounge"
+        }
+      ]
+    },
+    {
+      "name": "Cafeteria",
+      "description": "You are in the cafeteria. You see a long line of people waiting to get food. \nYou also see the east elevators.",
+      "imageUrl": "https://i.imgur.com/iY06W0E.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "Food"
+        },
+        {
+          "itemName": "Tables"
+        },
+        {
+          "itemName": "Chairs"
+        },
+        {
+          "itemName": "Piano"
+        },
+        {
+          "itemName": "TV"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "South",
+          "room": "East Hallway"
+        },
+        {
+          "directionName": "East",
+          "room": "East Elevators First Floor"
+        }
+      ]
+    },
+    {
+      "name": "East Elevators First Floor",
+      "description": "You are in one of the two elevators of the east building. The close and open \ndoor buttons do not work and the elevators are heckin' slow :') However, you can go up up to 6th floor and down to basement.",
+      "imageUrl": "https://i.imgur.com/VKMdhAA.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "BrokenFloorButtons!"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "Cafeteria"
+        },
+        {
+          "directionName": "Down",
+          "room": "East Elevators Basement Floor"
+        }
+      ]
+    },
+    {
+      "name": "East Lounge",
+      "description": "You are in the east lounge. You see a pool table, a couch, and a TV.",
+      "imageUrl": "https://i.imgur.com/YrPeVvJ.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "PoolTable"
+        },
+        {
+          "itemName": "Couch"
+        },
+        {
+          "itemName": "TV"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "West",
+          "room": "East Hallway"
+        }
+      ]
+    },
+    {
+      "name": "West Hallway",
+      "description": "You are in the west hallway. You see the west lounge.",
+      "imageUrl": "https://i.imgur.com/Qsgesqg.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [],
+      "directions": [
+        {
+          "directionName": "East",
+          "room": "Main Entrance"
+        },
+        {
+          "directionName": "West",
+          "room": "West Lounge"
+        }
+      ]
+    },
+    {
+      "name": "West Lounge",
+      "description": "You are in the west lounge. There are 4 study tables and you can see the west \nelevators.",
+      "imageUrl": "https://i.imgur.com/7RBJKDg.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "StudyTables"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "East",
+          "room": "West Hallway"
+        },
+        {
+          "directionName": "Northeast",
+          "room": "West Elevators First Floor"
+        }
+      ]
+    },
+    {
+      "name": "West Elevators First Floor",
+      "description": "You are in one of the two west elevators. The better elevators :') The buttons \nactually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
+      "imageUrl": "https://i.imgur.com/Z5B7WAR.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "Non-brokenFloorButtons!"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "Southwest",
+          "room": "West Lounge"
+        },
+        {
+          "directionName": "Up",
+          "room": "West Elevators Seventh Floor"
+        }
+      ]
+    },
+    {
+      "name": "West Elevators Seventh Floor",
+      "description": "You are in one of the two west elevators. The better elevators :') The buttons \nactually work and the elevators are pretty fast. They go up the seventh floor and down to the basement.",
+      "imageUrl": "https://i.imgur.com/OuDor25.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [
+        {
+          "itemName": "Non-brokenFloorButtons!"
+        }
+      ],
+      "directions": [
+        {
+          "directionName": "Down",
+          "room": "West Elevators First Floor"
+        },
+        {
+          "directionName": "Southwest"
+          "room": "Room 1705"
+        }
+      ]
+    },
+    {
+      "name": "Room 1705",
+      "description": "You are in room 1705 of the west building of Hendrick House! Yay you made it!",
+      "imageUrl": "https://i.imgur.com/FUQPLYX.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=l43kG7iDSw8&ab_channel=RelaxSunday",
+      "items": [],
+      "directions": [
+        {
+          "directionName": "Northeast",
+          "room": "West Elevators Seventh Floor"
+        }
+      ]
+    }
+  ]
+}

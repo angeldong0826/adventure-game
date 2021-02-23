@@ -17,4 +17,13 @@ public class Direction {
     public String getRoom() {
         return room;
     }
+
+    /**
+     * Method to test for valid direction.
+     */
+    public void isValidDirection() {
+        if (directionName == null || room == null) {
+            throw new NullPointerException();
+        }
+    }
 }
