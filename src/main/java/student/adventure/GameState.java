@@ -32,6 +32,14 @@ public class GameState {
         return inventory;
     }
 
+    public String inventoryToString() {
+        String[] inventoryToReturn = new String[inventory.size()];
+        for (int i = 0; i < inventoryToReturn.length; i++) {
+            inventoryToReturn[i] = inventory.get(i).getItemName();
+        }
+        return String.join(", ", inventoryToReturn);
+    }
+
     /**
      * Helper method that updates and returns a new current room.
      *

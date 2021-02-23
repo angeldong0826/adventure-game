@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import student.adventure.GameCommand;
 import student.adventure.GameEngine;
+import student.adventure.GameState;
 import student.adventure.Item;
 
 public class HendrickService implements AdventureService {
@@ -36,29 +37,29 @@ public class HendrickService implements AdventureService {
         GameStatus gameStatus;
         if (map.containsKey(id)) {
             GameEngine gameEngine = map.get(id);
+            GameState gameState = new GameState(gameEngine.getCurrentRoom(), gameEngine.gameState
+                .getInventory());
             this.id = id;
             String message = gameEngine.gameState.getCurrentLocation().getDescription();
             String imageUrl = gameEngine.gameState.getCurrentLocation().getImageUrl();
             String videoUrl = gameEngine.gameState.getCurrentLocation().getVideoUrl();
-            Map<String, List<String>> commandOptions = new HashMap<>();
-
+            AdventureState state = new AdventureState(gameEngine.locationHistoryToString(), gameState.inventoryToString());
             List<String> directions = gameEngine.gameState.getCurrentLocation().directionToList();
-
             List<String> items = gameEngine.gameState.getCurrentLocation().itemToList();
-
 
             List<String> dropOptions = new ArrayList<>();
             for (Item inventory: gameEngine.gameState.getInventory()) {
                 dropOptions.add(inventory.getItemName());
             }
 
+            Map<String, List<String>> commandOptions = new HashMap<>();
             commandOptions.put("go", directions);
             commandOptions.put("take", items);
             commandOptions.put("drop", dropOptions);
 
-            gameStatus = new GameStatus(false, id, message, imageUrl, videoUrl, new AdventureState(), commandOptions);
+            gameStatus = new GameStatus(false, id, message, imageUrl, videoUrl, state, commandOptions);
         } else {
-            gameStatus = new GameStatus(true, id, "","","",new AdventureState(), new HashMap<>());
+            gameStatus = new GameStatus(true, id, "","","",new AdventureState("", ""), new HashMap<>());
         }
         return gameStatus;
     }

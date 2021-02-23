@@ -19,16 +19,20 @@ import student.adventure.Item;
 @JsonSerialize
 public class AdventureState {
     // TODO: Add any additional state your game needs to this object.
-    // E.g.: If your game needs to display a life total, you could add:
-    // private int lifeTotal;
-    // ...and whatever constructor/getters/setters you'd need
-//    private String inventory;
-//
-//    public AdventureState(String inventory) {
-//        this.inventory = inventory;
-//    }
-//
-//    public String getInventory() {
-//        return inventory;
-//    }
+
+    private String locationHistory;
+    private String inventoryDisplay;
+
+    public AdventureState(String locationHistory, String inventoryDisplay) {
+        this.locationHistory = locationHistory;
+        this.inventoryDisplay = inventoryDisplay;
+    }
+
+    public String getLocationHistory() {
+        return locationHistory;
+    }
+
+    public String getInventoryDisplay() {
+        return inventoryDisplay;
+    }
 }

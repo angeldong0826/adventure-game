@@ -20,6 +20,19 @@ public class GameEngine {
     private boolean done;
     private Room nextRoom;
     public GameState gameState;
+    private List<String> locationHistory = new ArrayList<>();
+
+    public List<String> getLocationHistory() {
+        return locationHistory;
+    }
+
+    public String locationHistoryToString() {
+        String[] historyToReturn = new String[locationHistory.size()];
+        for (int i = 0; i < historyToReturn.length; i++) {
+            historyToReturn[i] = locationHistory.get(i);
+        }
+        return String.join(", ", historyToReturn);
+    }
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -33,11 +46,9 @@ public class GameEngine {
         this.currentRoom = currentRoom;
     }
 
-
     public GameEngine() {
         variable();
     }
-
 
     public void variable() {
         try {
@@ -50,6 +61,7 @@ public class GameEngine {
         nextRoom = null; // to hold the next room for my updateCurrentRoom method.
         gameState = new GameState(currentRoom, new ArrayList<>());
         done = false; // boolean to control status of game.
+        locationHistory.add(layout.getRooms().get(0).getName());
     }
 
     /**
@@ -103,20 +115,21 @@ public class GameEngine {
 
         if (name.equalsIgnoreCase("go")) {
 
-            //System.out.println("value: " + value);
             nextRoom = gameState.updateCurrentRoom(gameState, layout, value, gameState.getCurrentLocation());
             if (nextRoom == null) {
                 System.out.println("You can't go " + value + "!");
             } else {
                 gameState.setCurrentLocation(nextRoom);
                 isCommandValid = true;
+                if (!locationHistory.contains(nextRoom.getName())) {
+                    locationHistory.add(nextRoom.getName());
+                }
 
                 System.out.println(gameState.getCurrentLocation().getDescription());
                 if (!(gameState.getCurrentLocation().getName()
                     .equalsIgnoreCase(layout.getEndingRoom()))) {
                     gameState.getCurrentLocation().printAvailableDirections();
-                    gameState.getCurrentLocation()
-                        .printAvailableItems(gameState.getCurrentLocation());
+                    gameState.getCurrentLocation().printAvailableItems(gameState.getCurrentLocation());
                 }
             }
         }
@@ -136,8 +149,6 @@ public class GameEngine {
             System.out.println("Congrats! You successfully reached the ending room. Game Over :)");
             done = true;
         }
-
         return isCommandValid;
-
     }
 }
