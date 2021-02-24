@@ -4,11 +4,12 @@ package student.adventure;
  * GameCommand class that processes information from user command input.
  */
 public class GameCommand {
-    private final String commandName;
-    private final String commandValue;
+    private final String commandName; // command name. e.g. "take, drop, go"
+    private final String commandValue; // command value. e.g. "north, glassdoor"
 
     /**
      * Constructor that initializes variables command name and command value.
+     *
      * @param setCommandName as a String
      * @param setCommandValue as a String
      */
@@ -26,7 +27,8 @@ public class GameCommand {
     }
 
     /**
-     * Constructor that processes input command into name and value.
+     * Constructor that splits input command into name and value.
+     *
      * @param command as a String
      */
     public GameCommand(String command) {

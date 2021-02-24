@@ -16,6 +16,9 @@ import javax.validation.constraints.Null;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Test class for overall game backend.
+ */
 public class AdventureTest {
     private static final int ROOM_COUNT = 19;
 
@@ -30,7 +33,6 @@ public class AdventureTest {
     GameCommand gameCommand;
 
     public AdventureTest() throws FileNotFoundException {
-
     }
 
     @Before

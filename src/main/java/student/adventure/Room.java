@@ -8,11 +8,10 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * Room class that stores and returns the names and descriptions of rooms as Strings, items in rooms
- * and directions rooms lead to as a List.
+ * Room class that initializes room name, description, items in room, list of directions, imageUrl,
+ * and videoUrl.
  */
 public class Room {
-
     private String name; // name of room as a String
     private String description; // description of room as a String
     private List<Item> items; // list of items in room
@@ -44,16 +43,28 @@ public class Room {
         return videoUrl;
     }
 
+    /**
+     * Method to remove item from item list.
+     *
+     * @param item to be removed
+     */
     public void removeItem(Item item) {
         items.remove(item);
     }
 
+    /**
+     * Method to add item from item list.
+     *
+     * @param item to be added
+     */
     public void addItem(Item item) {
         items.add(item);
     }
 
     /**
-     * Method to test for valid room.
+     * Method to test for room validity.
+     *
+     * @throws NullPointerException if any of the room elements is null
      */
     public void isValidRoom() {
         if (name == null || description == null || items == null || directions == null ||
@@ -65,7 +76,7 @@ public class Room {
     /**
      * Helper method that prints out all available directions from a room.
      *
-     * @throws NullPointerException when directions is null
+     * @throws NullPointerException if direction is null
      */
     public void printAvailableDirections() {
         String availableDirections = "";
@@ -85,6 +96,11 @@ public class Room {
         System.out.println("From here, you can go: " + availableDirections);
     }
 
+    /**
+     * Helper method that adds all available directions to a list.
+     *
+     * @return direction as a list of Strings
+     */
     public List<String> directionToList() {
         List<String> directionList = new ArrayList<>();
         for (Direction direction: directions) {
@@ -96,7 +112,7 @@ public class Room {
     /**
      * Helper method that prints out all available items in a room.
      *
-     * @param room as a Room
+     * @param room to print available items from
      */
     public void printAvailableItems(Room room) {
         String availableItems = "";
@@ -110,6 +126,11 @@ public class Room {
         System.out.println("Items available: " + availableItems);
     }
 
+    /**
+     * Helper method that puts items into a list.
+     *
+     * @return items as a list
+     */
     public List<String> itemToList() {
         List<String> itemList = new ArrayList<>();
         for (Item item: items) {
@@ -118,7 +139,12 @@ public class Room {
         return itemList;
     }
 
-
+    /**
+     * Item dictionary that directs to items from names.
+     *
+     * @param room to put item in
+     * @return map of item dictionary with room names and keys and item names as values
+     */
     public static Map<String, Item> createItemDictionary(Room room) {
         Map<String, Item> itemDictionary = new HashMap<>();
         for (Item item : room.getItems()) {

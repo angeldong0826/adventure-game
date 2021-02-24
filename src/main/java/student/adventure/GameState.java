@@ -9,12 +9,17 @@ import java.util.Map;
  */
 public class GameState {
 
-    private Room currentRoom;
-    private List<Item> inventory;
-    private Room nextRoom;
-    private Layout layout;
+    private Room currentRoom; // current location
+    private List<Item> inventory; // inventory list of things taken
+    private Room nextRoom; // next location
+    private Layout layout; // room layout
 
-
+    /**
+     * Constructor that initializes current location and inventory.
+     *
+     * @param setCurrentLocation as a Room
+     * @param setInventory as a list of Items
+     */
     public GameState(Room setCurrentLocation, List<Item> setInventory) {
         currentRoom = setCurrentLocation;
         inventory = setInventory;
@@ -32,6 +37,11 @@ public class GameState {
         return inventory;
     }
 
+    /**
+     * Method that converts my arraylist of inventory to String.
+     *
+     * @return inventory as a String
+     */
     public String inventoryToString() {
         String[] inventoryToReturn = new String[inventory.size()];
         for (int i = 0; i < inventoryToReturn.length; i++) {
@@ -43,11 +53,12 @@ public class GameState {
     /**
      * Helper method that updates and returns a new current room.
      *
-     * @param layout      as a Layout
-     * @param direction   as a String
-     * @param currentRoom as a Room
-     * @return updated/new current room as a Room
-     * @throws NullPointerException if layout, direction, or currentRoom input is null
+     * @param gameState as a GameState
+     * @param layout of room layout
+     * @param direction that player is going
+     * @param currentRoom current room that player is in
+     * @return updated room as a Room
+     * @throws NullPointerException if any of the update current room parameters is null
      */
     public Room updateCurrentRoom(GameState gameState, Layout layout, String direction, Room currentRoom) {
         if (layout == null || direction == null || currentRoom == null) {
@@ -72,15 +83,13 @@ public class GameState {
         return updatedRoom;
     }
 
-
     /**
      * Helper method that takes items from rooms and updates the inventory and item lists.
      *
-     * @param itemName as a String
-     * @return whether or not item is in room/taken successfully as a boolean
-     * @throws NullPointerException itemName
+     * @param itemName item taking
+     * @throws NullPointerException if item taken is null
      */
-    public boolean take(String itemName) {
+    public void take(String itemName) {
         Map<String, Item> itemDictionary = Room.createItemDictionary(currentRoom);
         if (itemName == null) {
             throw new NullPointerException();
@@ -99,17 +108,15 @@ public class GameState {
         if (!itemInRoom) {
             System.out.println("There is no " + itemName + " in the room.");
         }
-        return itemInRoom;
     }
 
     /**
      * Helper method that drops items from rooms and updates the inventory and item lists.
      *
-     * @param itemName as a String
-     * @return whether or not item is dropped successfully as a boolean
-     * @throws NullPointerException itemName is null
+     * @param itemName item dropping
+     * @throws NullPointerException when item dropped is null
      */
-    public boolean drop(String itemName) {
+    public void drop(String itemName) {
         if (itemName == null) {
             throw new NullPointerException();
         }
@@ -127,6 +134,5 @@ public class GameState {
         if (!itemInInventory) {
             System.out.println("You don't have " + itemName + "!");
         }
-        return itemInInventory;
     }
 }

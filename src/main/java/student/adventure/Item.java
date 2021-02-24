@@ -4,9 +4,13 @@ package student.adventure;
  * Item class that stores and returns item names.
  */
 public class Item {
+    private String itemName; // name of item
 
-    private String itemName;
-
+    /**
+     * Constructor that initializes items.
+     *
+     * @param setItemName name of item
+     */
     public Item(String setItemName) {
         itemName = setItemName;
     }
@@ -16,7 +20,9 @@ public class Item {
     }
 
     /**
-     * Method to test for valid item.
+     * Method to test for item validity.
+     *
+     * @throws NullPointerException if item is null
      */
     public void isValidItem() {
         if (itemName == null) {

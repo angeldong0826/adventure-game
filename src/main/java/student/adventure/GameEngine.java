@@ -16,11 +16,11 @@ import java.util.Scanner;
  */
 public class GameEngine {
 
-    private static Layout layout;
-    private Room currentRoom;
-    private boolean done;
-    private Room nextRoom;
-    public GameState gameState;
+    private static Layout layout; // room layout
+    private Room currentRoom; // current room that player is in
+    private boolean done; // variable that controls the game status
+    private Room nextRoom; // next room variable that helps update room
+    public GameState gameState; // game state variable to take, drop, and update current room
     private List<String> locationHistory = new ArrayList<>();
     public String DEFAULT_JSON = "src/main/resources/hendrickhouse.json";
 
@@ -42,6 +42,7 @@ public class GameEngine {
 
     /**
      * Method that casts my arraylist of location history into a String in order to pass into server.
+     *
      * @return location history as a String
      */
     public String locationHistoryToString() {
@@ -54,6 +55,8 @@ public class GameEngine {
 
     /**
      * Constructor that calls on the initiated variables.
+     *
+     * @throws FileNotFoundException when file is not found or processed correctly
      */
     public GameEngine() throws FileNotFoundException {
         variable(DEFAULT_JSON);
@@ -61,6 +64,12 @@ public class GameEngine {
 
     /**
      * Method that stores initial values that game calls on.
+     *
+     * @throws FileNotFoundException when file is not found or processed correctly
+     * @throws NullPointerException when file input to be deserialized is null
+     * @throws IllegalArgumentException when file input to be deserialized is empty
+     * @throws NullPointerException when room layout is null
+     * @throws JsonSyntaxException when directions lead to nonexistent rooms
      */
     public void variable(String fileName) throws FileNotFoundException {
         Gson gson = new Gson();
@@ -107,6 +116,8 @@ public class GameEngine {
 
     /**
      * Console method in the game class that calls on the game.
+     *
+     * @throws FileNotFoundException when file is not found or processed correctly
      */
     public void console() throws FileNotFoundException {
         variable(DEFAULT_JSON);
@@ -124,12 +135,12 @@ public class GameEngine {
     }
 
     /**
-     * Method that executes users' input commands
-     * @param command as a GameCommand
-     * @return
+     * Method that executes users' input commands.
+     *
+     * @param command that user inputs
+     * @return true if command is executed validly
      */
     public boolean inputExecute(GameCommand command) {
-
         String name = command.getCommandName();
         String value = command.getCommandValue();
         boolean isCommandValid = false;

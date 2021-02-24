@@ -7,6 +7,9 @@ import student.server.HendrickService;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Test class for game api.
+ */
 public class HendrickTest {
     HendrickService service = new HendrickService();
 
