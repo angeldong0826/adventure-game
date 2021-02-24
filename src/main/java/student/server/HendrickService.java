@@ -23,6 +23,10 @@ public class HendrickService implements AdventureService {
         return id;
     }
 
+    public Map<Integer, GameEngine> getMap() {
+        return map;
+    }
+
     @Override
     public void reset() {
         System.out.println("Reset");

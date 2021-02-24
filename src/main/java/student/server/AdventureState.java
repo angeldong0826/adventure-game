@@ -20,9 +20,15 @@ import student.adventure.Item;
 public class AdventureState {
     // TODO: Add any additional state your game needs to this object.
 
-    private String locationHistory;
-    private String inventoryDisplay;
+    private String locationHistory; // string of location that player has been
+    private String inventoryDisplay; // string of user's updating inventory
 
+    /**
+     * Constructor that initializes location history and inventory display/
+     *
+     * @param locationHistory string of location history
+     * @param inventoryDisplay string of inventory to display
+     */
     public AdventureState(String locationHistory, String inventoryDisplay) {
         this.locationHistory = locationHistory;
         this.inventoryDisplay = inventoryDisplay;
