@@ -3,24 +3,35 @@ package student.adventure;
 import com.google.gson.Gson;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import com.google.gson.JsonSyntaxException;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.Reader;
 import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
+import java.util.List;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Null;
+import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import student.server.Command;
 
 /**
  * Test class for overall game backend.
  */
 public class AdventureTest {
     private static final int ROOM_COUNT = 19;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
 
     Gson gson;
     Reader reader;
@@ -33,6 +44,16 @@ public class AdventureTest {
     GameCommand gameCommand;
 
     public AdventureTest() throws FileNotFoundException {
+    }
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @After
+    public void restoreStreams() throws FileNotFoundException {
+        System.setOut(originalOut);
     }
 
     @Before
@@ -93,105 +114,149 @@ public class AdventureTest {
         gameEngine.variable("src/main/resources/hendrickhouse.json");
     }
 
-    // test white spaces
+    // test command input white space & case
     @Test
     public void test_whiteSpaceBeforeCommand() {
-        gameCommand = new GameCommand("   go  nORtH");
+        gameCommand = new GameCommand("   go  north");
         gameEngine.inputExecute(gameCommand);
         assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
     }
 
     @Test
     public void test_whiteSpaceBetweenCommand() {
-        gameCommand = new GameCommand("go            nORtH");
+        gameCommand = new GameCommand("go            north");
         gameEngine.inputExecute(gameCommand);
         assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
     }
 
     @Test
     public void test_whiteSpaceAfterCommand() {
-        gameCommand = new GameCommand("go nORtH       ");
+        gameCommand = new GameCommand("go north       ");
         gameEngine.inputExecute(gameCommand);
         assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
     }
 
     @Test
-    public void test_goValidDirection() {
+    public void test_whiteSpaceCombo() {
+        gameCommand = new GameCommand("  go     north       ");
+        gameEngine.inputExecute(gameCommand);
+        assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
+    }
+
+    @Test
+    public void test_ignoreCase() {
+        gameCommand = new GameCommand("gO NORtH");
+        gameEngine.inputExecute(gameCommand);
+        assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
+    }
+
+    // test display
+    @Test
+    public void test_startingRoomNameDisplay() {
+        String name = layout.getRooms().get(0).getName();
+        String expected = "Green Street";
+        assertEquals(expected, name);
+    }
+
+    @Test
+    public void test_startingRoomDescriptionDisplay() {
+        String description = layout.getRooms().get(0).getDescription();
+        String expected = "You are on Green Street, outside Hendrick House.";
+        assertEquals(expected, description);
+    }
+
+    @Test
+    public void test_validDirectionDisplay() {
+        String direction = currentRoom.printAvailableDirections();
+        assertEquals("From here, you can go: North", direction);
+    }
+
+    @Test
+    public void test_availableItemDisplay() {
+        String item = currentRoom.printAvailableItems(currentRoom);
+        assertEquals("Items available: GlassDoor", item);
+    }
+
+    // test updates
+    @Test
+    public void test_currentRoom() {
         gameCommand = new GameCommand("go nORtH");
         gameEngine.inputExecute(gameCommand);
         assertEquals("Main Entrance", gameEngine.gameState.getCurrentLocation().getName());
     }
 
-    @Test
-    public void test_roomNameDisplay() {
-
+    // test input command
+    @Test(expected = NullPointerException.class)
+    public void test_nullCommand() {
+        gameEngine.inputExecute(new GameCommand(null));
     }
 
-    @Test
-    public void test_descriptionDisplay() {
-    }
-
-    @Test
-    public void test_currentRoom() {
+    @Test(expected = NullPointerException.class)
+    public void test_emptyCommand() {
+        gameEngine.inputExecute(new GameCommand(""));
     }
 
     @Test
     public void test_invalidCommand() {
-    }
-
-    @Test
-    public void test_itemAvailability() {
-    }
-
-    @Test
-    public void test_unavailableItem() {
-    }
-
-    @Test
-    public void test_inventoryAccuracy() {
+        gameEngine.inputExecute(new GameCommand("helpmeiamdying"));
+        assertFalse(gameEngine.isDone());
     }
 
     @Test
     public void test_quit() {
+        gameEngine.inputExecute(new GameCommand("quit"));
+        assertTrue(gameEngine.isDone());
     }
 
     @Test
     public void test_exit() {
+        gameEngine.inputExecute(new GameCommand("exit"));
+        assertTrue(gameEngine.isDone());
     }
 
     @Test
-    public void test_quitOrExit() {
+    public void test_goValidDirection() {
+        assertTrue(gameEngine.inputExecute(new GameCommand("go north")));
+    }
+
+    @Test
+    public void test_goInvalidDirection() {
+        assertFalse(gameEngine.inputExecute(new GameCommand("go south")));
     }
 
     @Test
     public void test_examine() {
+        gameEngine.inputExecute(new GameCommand("examine"));
+        String output = "You are on Green Street, outside Hendrick House.\n"
+            + "From here, you can go: North\n"
+            + "Items available: GlassDoor\n";
+        assertEquals(output, outContent.toString());
     }
 
     @Test
-    public void test_take() {
+    public void test_takeAvailableItem() {
+        gameEngine.inputExecute(new GameCommand("take","glassdoor"));
+        assert gameEngine.getGameState().getInventory().get(0).getItemName().equalsIgnoreCase("glassdoor");
     }
 
     @Test
-    public void test_takeWhenNotAvailable() {
+    public void test_takeUnavailableItem() {
+        gameEngine.inputExecute(new GameCommand("take", "urmom"));
+        String output = "There is no urmom in the room.\n";
+        assertEquals(output, outContent.toString());
     }
 
     @Test
-    public void test_doubleTake() {
+    public void test_dropAvailableItem() {
+        gameEngine.inputExecute(new GameCommand("drop", "glassdoor"));
+        assert !(gameEngine.getGameState().inventoryToString().contains("glassdoor"));
+        assert !(gameState.getCurrentLocation().getItems().contains("glassdoor"));
     }
 
     @Test
-    public void test_drop() {
-    }
-
-    @Test
-    public void test_dropWhenNotAcquired() {
-    }
-
-    @Test
-    public void test_dropWhenInventoryEmpty() {
-    }
-
-    @Test
-    public void test_doubleDrop() {
+    public void test_dropUnavailableItem() {
+        gameEngine.inputExecute(new GameCommand("drop", "urmom"));
+        String output = "You don't have urmom!\n";
+        assertEquals(output, outContent.toString());
     }
 }

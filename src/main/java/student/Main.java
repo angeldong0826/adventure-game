@@ -10,7 +10,6 @@ import student.server.AdventureServer;
  * Main class that contains the main method that calls on the game.
  */
 public class Main {
-
     /**
      * Main method that calls on the game.
      *

@@ -30,8 +30,12 @@ public class GameCommand {
      * Constructor that splits input command into name and value.
      *
      * @param command as a String
+     * @throws NullPointerException if command input is null or empty
      */
     public GameCommand(String command) {
+        if (command == null || command.length() == 0) {
+            throw new NullPointerException();
+        }
         String[] splitCommand = command.trim().split("\\s+"); // to hold input split by whitespaces in an Arraylist
         String name = "";
         String value = "";

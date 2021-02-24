@@ -40,6 +40,10 @@ public class GameEngine {
         this.currentRoom = currentRoom;
     }
 
+    public boolean isDone() {
+        return done;
+    }
+
     /**
      * Method that casts my arraylist of location history into a String in order to pass into server.
      *
@@ -139,6 +143,7 @@ public class GameEngine {
      *
      * @param command that user inputs
      * @return true if command is executed validly
+     * @throws NullPointerException if command is null
      */
     public boolean inputExecute(GameCommand command) {
         String name = command.getCommandName();
@@ -175,6 +180,7 @@ public class GameEngine {
             } else {
                 gameState.setCurrentLocation(nextRoom);
                 isCommandValid = true;
+
                 if (!locationHistory.contains(nextRoom.getName())) {
                     locationHistory.add(nextRoom.getName());
                 }
